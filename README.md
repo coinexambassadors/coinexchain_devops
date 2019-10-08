@@ -81,16 +81,23 @@
         - `26659`: 如果使用下文中`方案3`时, 供与tmkms连接使用.
         - `1317`:  按需开放或只对可信网段开放, 供cetcli运行的rest-server使用, 提供基于REST接口的交互及swagger文档
 
-- 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用. `以下参数以coinexdex-test2002为示例`:
-    > export CHAIN_ID=coinexdex-test2002<br>
-    > export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2002<br>
-    > export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd<br>
-    > export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli<br>
-    > export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json<br>
-    > export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example<br>
-    > export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum<br>
-    > export CHAIN_SEEDS=752ee6947aaafbfabc56938b4f65bfdf9a62e4bb@3.19.184.4:26656,7562b9dff832ddcd3f019d7a30262ba8bff7a383@18.189.200.85:26656<br>
-
+- 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用. 以下参数以[coinexdex-test2003](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2003)为示例:
+    ```
+    export CHAIN_ID=coinexdex-test2003
+    export CHAIN_SEEDS=5d78fc7d5d5947f6525c6fbc62a6517c3875cb00@18.140.188.15:26656,e51c2e356e217b621c0b2289ce786f30afecb174@18.140.191.248:26656
+    export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2003
+    export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
+    export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
+    export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
+    export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
+    export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
+    export FAUCET_URL=http://18.140.188.15
+    export FAUCET_ADDR=cettest17lk6szw330e25xpz7w60aljcmw27g3aum63ax8
+    export REST_API=http://18.140.188.15:1317/swagger/
+    export REST_API=http://18.140.191.248:1317/swagger/
+    export TESTNET_RPC_URL=18.140.188.15:26657
+    export TESTNET_EXPLORER_URL=http://18.139.166.177
+    ```
 
 - 1.4 确定安装参数, 以执行目录/home/ubuntu为例:
     > \#软件安装目录<br>
@@ -229,8 +236,7 @@
 - 1.12 获取节点共识consensus pubkey, 供后续创建验证节点使用
     > echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator)"<br> 
 
-    
-    样例输出: (测试网前缀cettestvalconspub, 主网前缀coinexvalconspub)
+    样例输出: (测试网前缀`cettestvalconspub`, 主网前缀`coinexvalconspub`)
 
     ```
     export VALIDATOR_CONSENSUS_PUBKEY=cettestvalconspub1zcjduepqn926zz0lqt9dt83xfn9vflnxhrem644ep4k4qkgz2fjpef3402mqeuf2yz
@@ -315,7 +321,7 @@
     > echo ${VALIDATOR_OPERATOR_ADDR}
 
     如果是测试网络, 可以从水龙头获取测试币. 水龙头地址请查找[链接](https://github.com/coinexchain/testnets)<br>
-    比如: 测试网`coinexdex-test2002`[水龙头地址](http://18.189.200.85/)
+    比如: 测试网`coinexdex-test2003`[水龙头地址](http://18.140.188.15/)
 
 - 1.17 [可选] 查询地址余额:
     > ./cetcli q account $(./cetcli keys show ${KEY_NAME} -a) --chain-id=${CHAIN_ID}
@@ -512,6 +518,15 @@
 
 - 使用哨兵节点对验证人节点进行防护, 可以预防DDoS攻击, 验证人节点通过哨兵节点与P2P网络通信, 多了一层防护.
 - 哨兵节点方案请参考[链接](https://forum.cosmos.network/t/sentry-node-architecture-overview/454)
+
+- 部署示意图如下:
+
+    <img src="./images/sentry_architecture_example.svg">
+
+    - `ValidatorNode`为受保护的验证人节点, 由哨兵节点将其与外部P2P Network连通起来
+    - `SentryNode1`及`SentryNode2`为哨兵节点, 防止验证人节点直接暴露在公共网络中. 
+    - 示例中只设置了两个哨兵节点, 节点运营者可根据自己的方案调整哨兵节点的数量
+    - 节点运营者可以进一步尝试部署哨兵节点自动扩容, 自动换外部IP等防DDoS的方案.
 
 <br>
 <br>

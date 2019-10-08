@@ -1,0 +1,33 @@
+<svg width="540" height="450" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="452" width="542" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000" id="svg_20" height="219.091118" width="377.273073" y="50.397398" x="83.181418" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <rect stroke="#ff0000" id="svg_3" height="33.000001" width="97.000003" y="63.710139" x="221.136175" stroke-width="1.5" fill="none"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_2" y="85.619232" x="230.247004" stroke-width="0" stroke="#ff0000" fill="#ff0000">ValidatorNode</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_5" y="116.528348" x="234.617747" stroke-width="0" stroke="#ff0000" fill="#ff0000">172.31.12.53</text>
+  <rect stroke="#000" id="svg_8" height="33.000001" width="97.000003" y="217.346678" x="339.318102" stroke-width="1.5" fill="#fff"/>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_9" y="238.80759" x="352.80403" stroke-width="0" stroke="#000" fill="#000000">SentryNode2</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_10" y="264.704629" x="345.216671" stroke-width="0" stroke="#729C62" fill="#A0D58A">18.189.162.176</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_11" y="208.346622" x="349.465251" stroke-width="0" stroke="#ff0000" fill="#ff0000">172.31.16.150</text>
+  <rect stroke="#000" id="svg_12" height="33.000001" width="97.000003" y="217.346651" x="101.136073" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_13" y="238.802619" x="114.627494" stroke-width="0" stroke="#000" fill="#000000">SentryNode1</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_16" y="264.707469" x="111.282322" stroke-width="0" stroke="#729C62" fill="#A0D58A">18.191.57.190</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_17" y="208.345207" x="114.615428" stroke-width="0" stroke="#ff0000" fill="#ff0000">172.31.30.45</text>
+  <line stroke="#ff0000" stroke-linecap="null" stroke-linejoin="null" id="svg_18" y2="119.488371" x2="250.454302" y1="200.397534" x1="166.81786" stroke-width="1.5" fill="none"/>
+  <line stroke="#ff0000" stroke-linecap="null" stroke-linejoin="null" id="svg_19" y2="198.579354" x2="377.727153" y1="120.397465" x1="284.999785" stroke-width="1.5" fill="none"/>
+  <rect stroke="#729C62" id="svg_21" height="33.000001" width="97.000003" y="377.346807" x="98.408788" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_22" y="398.346809" x="107.519617" stroke-width="0" stroke="#729C62" fill="#A0D58A">ExternalNodeA</text>
+  <rect stroke="#729C62" id="svg_23" height="33.000001" width="97.000003" y="377.346807" x="340.227193" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_24" y="398.346809" x="349.338022" stroke-width="0" stroke="#729C62" fill="#A0D58A">ExternalNodeB</text>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_27" y2="375.88606" x2="147.726936" y1="265.852154" x1="147.726936" stroke-width="1.5" stroke="#729C62" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_28" y2="375.886049" x2="389.545341" y1="265.852144" x1="389.545341" fill-opacity="null" stroke-width="1.5" stroke="#729C62" fill="none"/>
+ </g>
+</svg>
