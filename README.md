@@ -547,7 +547,7 @@ So far, the deployment of stand-alone validator has been completed.
 
 ---
 
-## 方案3: Tendermint KMS + Validator + Sentry Nodes
+## Solution 3: Tendermint KMS + Validator + Sentry Nodes
 > Tendermint KMS will provide better private key protection, but Tendermint KMS is in beta version now, Validator operator can choose accordingly.
 > 
 > There are operators in the community help to fix problems in Tendermint KMS and use it in production, see [cases](https://iqlusion.blog/postmortem-2019-08-08-tendermint-kms-related-cosmos-hub-validator-incident)
@@ -556,7 +556,7 @@ So far, the deployment of stand-alone validator has been completed.
 
 - [What's Tendermint KMS?](https://github.com/tendermint/kms)
 - Tools preparation: [link](https://github.com/tendermint/kms#installation)
-- Config details [link](https://github.com/tendermint/kms#usage) and [tendermint kms with yubihsm](https://github.com/tendermint/kms/blob/master/README.yubihsm.md)
+- Config details [link](https://github.com/tendermint/kms#usage) and [tendermint kms with yubihsm2](https://github.com/tendermint/kms/blob/master/README.yubihsm.md)
 
 - Example diagram:
 
