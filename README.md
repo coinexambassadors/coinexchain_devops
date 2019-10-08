@@ -33,7 +33,7 @@
 ---
 
 ### 部署方案总述
-下面会介绍几个递进的方案, 从最简单的部署方案(安全性可靠性较差)到较复杂的(安全性可靠性较好)部署方案.
+部署时可以采用的方案如下, 节点运营者也可以基于这些方案定制自己特有的部署方案:
 
 - `方案1`: 单机Validator
     - 单机方案是最简单的部署, 但是安全性不够高
@@ -41,9 +41,6 @@
     - 加上哨兵节点隐藏和防护Validator后, 可以隐藏Validator机器的IP, 防止DDoS攻击
 - `方案3`: Tendermint KMS + 单机Validator + 哨兵节点
     - 使用Tedermint KMS可以更好地保护节点的私钥, 同时也有进一步的防止节点双签的保护
-- `方案4`: 安全性可靠性增强建议
-    - 给出对网络进行更细致的防护及隔离的建议
-
 <br>
 <br>
 <br>
@@ -537,25 +534,23 @@
 ---
 
 ## 方案3: Tendermint KMS + Validator + 哨兵节点
+> Tendermint KMS可以对节点私钥进行更安全的保护, 但是Tendermint KMS目前处于beta版本, 节点运营者可根据自己的情况决定是否采用Tendermint KMS方案.
+> 
+> 社区中也有节点运营者在使用Tendermint KMS方案, 并在积极分享和参与一些问题的修正. [案例](https://iqlusion.blog/postmortem-2019-08-08-tendermint-kms-related-cosmos-hub-validator-incident)
+
+
+
 - [什么是Tendermint KMS?](https://github.com/tendermint/kms)
 - 工具编译请参考[链接](https://github.com/tendermint/kms#installation)
-- 配置请参考[链接](https://github.com/tendermint/kms#usage)
+- 配置请参考[链接](https://github.com/tendermint/kms#usage)和[tendermint kms with yubihsm](https://github.com/tendermint/kms/blob/master/README.yubihsm.md)
 
-<br>
-<br>
-<br>
-<br>
-<br>
+- 部署示意图如下:
 
----
+    <img src="./images/with_tmkms.svg">
 
-
-## 方案4: 安全性可靠性增强建议
-
-- 稍候补充:
-
-<br>
-<br>
+    - Tendermint KMS需要部署在私有数据中心, 配合YubiHSM2进行使用
+    - ValidatorNode可以部署在云端
+    - ValidatorNode对块的共识签名会通过Tendermint KMS完成.
 <br>
 <br>
 <br>

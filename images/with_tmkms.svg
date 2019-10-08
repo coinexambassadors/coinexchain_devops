@@ -1,0 +1,42 @@
+<svg width="470.00000000000006" height="550" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="552" width="472" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000" id="svg_20" height="344.545776" width="377.273073" y="30.397378" x="41.363181" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <rect stroke="#ff0000" id="svg_3" height="33.000001" width="97.000003" y="169.164782" x="179.317937" stroke-width="1.5" fill="none"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_2" y="191.073875" x="188.428766" stroke-width="0" stroke="#ff0000" fill="#ff0000">ValidatorNode</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_5" y="221.982992" x="192.799509" stroke-width="0" stroke="#ff0000" fill="#ff0000">172.31.12.53</text>
+  <rect stroke="#000" id="svg_8" height="33.000001" width="97.000003" y="322.801321" x="297.499865" stroke-width="1.5" fill="#fff"/>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_9" y="344.262233" x="310.985793" stroke-width="0" stroke="#000" fill="#000000">SentryNode2</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_10" y="370.159272" x="303.398434" stroke-width="0" stroke="#729C62" fill="#A0D58A">18.189.162.176</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_11" y="313.801265" x="307.647014" stroke-width="0" stroke="#ff0000" fill="#ff0000">172.31.16.150</text>
+  <rect stroke="#000" id="svg_12" height="33.000001" width="97.000003" y="322.801294" x="59.317835" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_13" y="344.257262" x="72.809256" stroke-width="0" stroke="#000" fill="#000000">SentryNode1</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_16" y="370.162112" x="69.464084" stroke-width="0" stroke="#729C62" fill="#A0D58A">18.191.57.190</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_17" y="313.79985" x="72.797191" stroke-width="0" stroke="#ff0000" fill="#ff0000">172.31.30.45</text>
+  <line stroke="#ff0000" stroke-linecap="null" stroke-linejoin="null" id="svg_18" y2="224.943015" x2="208.636065" y1="305.852177" x1="124.999623" stroke-width="1.5" fill="none"/>
+  <line stroke="#ff0000" stroke-linecap="null" stroke-linejoin="null" id="svg_19" y2="304.033997" x2="335.908915" y1="222.21574" x1="239.54518" stroke-width="1.5" fill="none"/>
+  <rect stroke="#729C62" id="svg_21" height="33.000001" width="97.000003" y="482.801451" x="56.590551" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_22" y="503.801452" x="65.70138" stroke-width="0" stroke="#729C62" fill="#A0D58A">ExternalNodeA</text>
+  <rect stroke="#729C62" id="svg_23" height="33.000001" width="97.000003" y="482.801451" x="298.408956" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_24" y="503.801452" x="307.519785" stroke-width="0" stroke="#729C62" fill="#A0D58A">ExternalNodeB</text>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_27" y2="481.340703" x2="105.908699" y1="371.306798" x1="105.908699" stroke-width="1.5" stroke="#729C62" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_28" y2="481.340693" x2="347.727104" y1="371.306787" x1="347.727104" fill-opacity="null" stroke-width="1.5" stroke="#729C62" fill="none"/>
+  <rect stroke="#0000bf" id="svg_29" height="33.000001" width="106.09092" y="48.255576" x="179.317938" stroke-width="1.5" fill="none"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_30" y="70.164669" x="188.428766" stroke-width="0" stroke="#619E73" fill="#0000bf">TendermintKMS</text>
+  <rect stroke="#0000bf" id="svg_31" height="33.000001" width="75.181804" y="47.346484" x="318.40899" stroke-width="1.5" fill="none"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_32" y="69.255577" x="327.519816" stroke-width="0" stroke="#619E73" fill="#0000bf">YubiHSM2</text>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_33" y2="65.306507" x2="319.727108" y1="65.306507" x1="284.272528" fill-opacity="null" stroke-width="1.5" stroke="#0000bf" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_34" y2="168.985573" x2="227.908838" y1="81.670159" x1="227.908838" stroke-width="1.5" stroke="#0000bf" fill="none"/>
+  <rect stroke="#000" id="svg_35" height="219.091095" width="377.273073" y="155.852047" x="41.363181" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_36" y="177.124795" x="53.374584" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">Cloud</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="12" id="svg_37" y="140.761137" x="53.363217" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">On-Premises</text>
+ </g>
+</svg>
