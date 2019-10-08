@@ -258,7 +258,7 @@
 <br>
 <br>
 
-- 1.12 [个人电脑]以下切换到个人电脑上操作 (个人电脑假设同样为`Ubuntu 18.04`).
+- 1.13 [个人电脑]以下切换到个人电脑上操作 (个人电脑假设同样为`Ubuntu 18.04`).
     - 个人电脑上重复执行 `1.3`及`1.4`步骤内容, 以便使个人电脑shell中也能找到相关的环境参数
     - 检查环境变量中以下变量有值:
     > [ "${VALIDATOR_PUBLIC_IP}" != "" ] && echo "OK" || echo "ERROR"<br>
@@ -267,14 +267,14 @@
     > [ "${CHAIN_ID}" != "" ] && echo "OK" || echo "ERROR"<br>
 
 
-- 1.13 [个人电脑]在个人电脑上下载cetcli, 并设置cetcli连接远端搭建的服务器节点.
+- 1.14 [个人电脑]在个人电脑上下载cetcli, 并设置cetcli连接远端搭建的服务器节点.
     > curl ${CETCLI_URL} > cetcli<br>
     > chmod a+x ./cetcli<br>
     > ./cetcli config node ${VALIDATOR_PUBLIC_IP}:26657<br>
     > \# 执行cetcli status查看确认已经连接到了远程节点<br>
     > ./cetcli status | grep ${VALIDATOR_PUBLIC_IP}  && echo "OK" || echo "ERROR"<br>
 
-- 1.14 [个人电脑]创建帐户<br>
+- 1.15 [个人电脑]创建帐户<br>
     **`NOTES: >>>your mnemonic passphrase will print out by this command, store it safely<<<`**<br>
     **`NOTES: >>>your private keystore will be in folder: ~/.cetcli, PLEASE DO BACKUP<<<`**
     > \#example export KEY_NAME=my_key<br>
@@ -309,7 +309,7 @@
     <br><br>
     </details>  
 
-- 1.15 [个人电脑] 查到帐户地址后, 可从CoinEx交易所提现操作到链上地址.
+- 1.16 [个人电脑] 查到帐户地址后, 可从CoinEx交易所提现操作到链上地址.
     > export VALIDATOR_OPERATOR_ADDR=$(./cetcli keys show ${KEY_NAME} -a)<br>
     > [ "${VALIDATOR_OPERATOR_ADDR}" != "" ] && echo "OK" || echo "ERROR"<br>
     > echo ${VALIDATOR_OPERATOR_ADDR}
@@ -317,7 +317,7 @@
     如果是测试网络, 可以从水龙头获取测试币. 水龙头地址请查找[链接](https://github.com/coinexchain/testnets)<br>
     比如: 测试网`coinexdex-test2002`[水龙头地址](http://18.189.200.85/)
 
-- 1.16 [可选] 查询地址余额:
+- 1.17 [可选] 查询地址余额:
     > ./cetcli q account $(./cetcli keys show ${KEY_NAME} -a) --chain-id=${CHAIN_ID}
 
     如果显示`"account ... does not exist"`是帐户地址还没有在链上出现过, 或者节点还没有同步到执行转帐交易的高度.
@@ -337,19 +337,19 @@
     `so in previous example 1499900000000cet on chain means 14999CET`<br>
     `One CET will be charged as account activation feature fee`<br>
 
-- 1.17.1 发送成为验证者节点的交易
+- 1.18.1 发送成为验证者节点的交易
     - 个人电脑上执行`1.12`中的输出, 以便个人电脑shell能找到`${VALIDATOR_CONSENSUS_PUBKEY}`
     - 检查一下节点共识公钥是否已在shell中可用:
         > [ "${VALIDATOR_CONSENSUS_PUBKEY}" != "" ] && echo "OK" || echo "ERROR"<br>
 
-- 1.17.2 准备节点的identity, 以便自定义的验证人节点图标<br>
+- 1.18.2 准备节点的identity, 以便自定义的验证人节点图标<br>
     - 从https://keybase.io网站注册后, 上传自定义图标, 并获得相应的identity
     - 比如[ViaWallet](https://keybase.io/viawallet)在测试网中使用的identity是`9A30CBDA5872CED8`
     - 导出:
     > export VALIDATOR_IDENTITY=~~`<REPLACE_WITH_YOUR_IDENTITY>`~~<br>
     > [ "${VALIDATOR_IDENTITY}" != "" ] && echo "OK" || echo "ERROR"<br>
 
-- 1.17.3 发送交易
+- 1.18.3 发送交易
     > \# Send CreateValidator tx to become a validator<br>
     > ./cetcli tx staking create-validator \\\
     --amount=500000000000000cet \\\
@@ -364,6 +364,28 @@
     --from $(./cetcli keys show ${KEY_NAME} -a) \\\
     --gas 300000 \\\
     --fees 6000000cet
+
+    <details>
+    <summary>测试网中对质押要求较少, 只需要1万CET:</summary>
+
+    > \# Send CreateValidator tx to become a validator<br>
+    > ./cetcli tx staking create-validator \\\
+    --amount=1000000000000cet \\\
+    --pubkey=${VALIDATOR_CONSENSUS_PUBKEY} \\\
+    --moniker=${VALIDATOR_MONIKER} \\\
+    --identity=${VALIDATOR_IDENTITY} \\\
+    --chain-id=${CHAIN_ID} \\\
+    --commission-rate=0.1 \\\
+    --commission-max-rate=0.2 \\\
+    --commission-max-change-rate=0.01 \\\
+    --min-self-delegation=1000000000000 \\\
+    --from $(./cetcli keys show ${KEY_NAME} -a) \\\
+    --gas 300000 \\\
+    --fees 6000000cet
+
+    ---
+    <br>
+    </details> 
 
     <details>
     <summary>cetcli tx staking create-validator --help:</summary>
@@ -422,7 +444,7 @@
     - 测试网浏览器请查找[链接](https://github.com/coinexchain/testnets)
 
 - Get your validator operator address
-    > cetcli keys show ${KEY_NAME} --bech val
+    > ./cetcli keys show ${KEY_NAME} --bech val
     ```
     NAME:	TYPE:	ADDRESS:					
     fullnode_user1	local	coinexvaloper1kg3e5p2rc2ejppwts6qwzrcgndvgeyztudujdz	
@@ -431,7 +453,7 @@
     ```
 
 - Query all validators
-    > cetcli q staking validators --chain-id=${CHAIN_ID}
+    > ./cetcli q staking validators --chain-id=${CHAIN_ID}
     ```
     Validator
     Operator Address:           coinexvaloper1kg3e5p2rc2ejppwts6qwzrcgndvgeyztudujdz
@@ -449,7 +471,8 @@
     ...
     ```
 
-- Do I in vaidator set?
+- Do I in vaidator set?<br>
+    `NOTES: Need to execute on your server.`
     > ./cetcli q tendermint-validator-set --chain-id=${CHAIN_ID} | grep $(./cetd tendermint show-validator) && echo "in validator set" || echo "not in validator set"
 
     输出"in validator set"时, 表示相关你的验证人节点已经建立完成.
@@ -487,6 +510,7 @@
 
 ## 方案2: Validator + 哨兵节点
 
+- 使用哨兵节点对验证人节点进行防护, 可以预防DDoS攻击, 验证人节点通过哨兵节点与P2P网络通信, 多了一层防护.
 - 哨兵节点方案请参考[链接](https://forum.cosmos.network/t/sentry-node-architecture-overview/454)
 
 <br>
@@ -495,9 +519,7 @@
 <br>
 <br>
 
-
 ---
-
 
 ## 方案3: Tendermint KMS + Validator + 哨兵节点
 - [什么是Tendermint KMS?](https://github.com/tendermint/kms)
