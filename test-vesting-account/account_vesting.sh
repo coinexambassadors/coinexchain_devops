@@ -86,6 +86,11 @@ echo "####################################################### Send coins。用�
 cetcli tx send $(cetcli keys show bob -a) ${six_amount} --from ${validator_name} --fees=${fees} --chain-id=${chain_id}
 sleep 3
 
+echo "####################################################### Send coins。用户余额600w vesting未到期，转账 100w cet，转账失败 "
+cetcli tx send $(cetcli keys show bob -a) ${test_amount} --from ${validator_name} --fees=${fees} --chain-id=${chain_id}
+sleep 3
+
+echo "####################################################### Create-gte-order。用户余额600w vesting未到期，试图花费cet购买abc，下单失败"
 cetcli tx market create-gte-order \
         --trading-pair=abc/cet \
         --side=1 --order-type=2 \
