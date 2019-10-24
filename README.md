@@ -89,22 +89,22 @@ The diversity of node deployment solutions in the network contributes to the ove
             </details>
 
 
-- 1.3 Export Chain parameters in your shell <br> **`EXAMPLE`** parameters for [coinexdex-test2003](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2003):
+- 1.3 Export Chain parameters in your shell <br> **`EXAMPLE`** parameters for [coinexdex-test2004](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2004):
     ```
-    export CHAIN_ID=coinexdex-test2003
-    export CHAIN_SEEDS=5d78fc7d5d5947f6525c6fbc62a6517c3875cb00@18.140.188.15:26656,e51c2e356e217b621c0b2289ce786f30afecb174@18.140.191.248:26656
-    export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2003
+    export CHAIN_ID=coinexdex-test2004
+    export CHAIN_SEEDS=b71a1fbfd2aeaad55eec6d2e61c4d2b431a20e09@3.132.21.89:26656,5b8ee18bc3745f2e6d141ea7133a73013b8da200@18.190.80.148:26656
+    export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2004
     export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
     export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
     export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
     export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
     export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
-    export FAUCET_URL=http://18.140.188.15
-    export FAUCET_ADDR=cettest17lk6szw330e25xpz7w60aljcmw27g3aum63ax8
-    export REST_API=http://18.140.188.15:1317/swagger/
-    export REST_API=http://18.140.191.248:1317/swagger/
-    export TESTNET_RPC_URL=18.140.188.15:26657
-    export TESTNET_EXPLORER_URL=http://18.139.166.177
+
+    export FAUCET_URL=http://18.190.80.148
+    export REST_API=http://18.190.80.148:1317/swagger/
+    export REST_API=http://3.132.21.89:1317/swagger/
+    export TESTNET_RPC_URL=18.190.80.148:26657
+    export TESTNET_EXPLORER_URL=http://47.244.44.205/
     ```
 
 - 1.4 Export your env parameters,  use `/home/ubuntu` as node setup example directory:
