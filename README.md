@@ -107,9 +107,11 @@ The diversity of node deployment solutions in the network contributes to the ove
     export TESTNET_EXPLORER_URL=http://47.244.44.205/
     ```
 
-- 1.4 Export your env parameters,  use `/home/ubuntu` as node setup example directory:
+- 1.4 Export your env parameters,  use `/opt/cet` as node setup example directory:
     > \#Chain software installation path<br>
-    > export RUN_DIR=~~`/home/ubuntu`~~<br>
+    > export RUN_DIR=~~`/opt/cet`~~<br>
+    > sudo mkdir -p ${RUN_DIR}<br>
+    > sudo chown $USER ${RUN_DIR}<br>
     > \#Node Name, e.g.: MyAwesomeNode. (please keep the `'` marks) <br>
     > export VALIDATOR_MONIKER='~~`<your_moniker_name>`~~'<br>
     > \#Node's public IP <br>
@@ -135,16 +137,16 @@ The diversity of node deployment solutions in the network contributes to the ove
     </details>
 
 - 1.6 Init node's data directory
-    > ${RUN_DIR}/cetd init ${VALIDATOR_MONIKER} --chain-id=${CHAIN_ID}
+    > ${RUN_DIR}/cetd init ${VALIDATOR_MONIKER} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd
 
-    **`NOTES: >>>YOUR NODE's CONSENSUS PRIVATE KEY are generated in ~/.cetd, PLEASE DO BACKUP.<<<`**
+    **`NOTES: >>>YOUR NODE's CONSENSUS PRIVATE KEY are generated in ${RUN_DIR}/.cetd, PLEASE DO BACKUP.<<<`**
     <details>
-    <summary>How to backup consensus private key?</summary>
+    <summary> >>> Do backup the consensus private key <<<</summary>
 
-    The initialized data directory will be `~/.cetd` by default, >>> **`PLEASE DO BACKUP FOLLOWING FILES`** <<< <br>
+    The initialized data directory will be `${RUN_DIR}/.cetd` by default, >>> **`PLEASE DO BACKUP FOLLOWING FILES`** <<< <br>
 
     ```shell
-    /home/ubuntu/.cetd
+    ${RUN_DIR}/.cetd
     ├── config
     │   ├── app.toml                 <- configuration for application
     │   ├── config.toml              <- configuation for consensus and P2P
@@ -159,7 +161,7 @@ The diversity of node deployment solutions in the network contributes to the ove
     </details>
 
 - 1.7 Use chain initial state config
-    > cp ${RUN_DIR}/genesis.json ~/.cetd/config/genesis.json
+    > cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json
 
 - 1.8 Config external address so P2P peer can find your node
     > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=external_address value='\\"tcp://${VALIDATOR_PUBLIC_IP}:26656\\"' backup=true"
@@ -174,13 +176,13 @@ The diversity of node deployment solutions in the network contributes to the ove
     
 - 1.10 Start your node
     <br>Could start with following command, But recommend to start your node with software like Systemd or Supervisor
-    > ${RUN_DIR}/cetd start
+    > ${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd
 
     <details>
     <summary>1.10 operation example: (use `systemd` to manage `cetd`)</summary>
 
     **<br>`Example only, please further customize the systemd config details and log management`** 
-
+    > ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd' backup=true"<br>
     > sudo mv ${RUN_DIR}/cetd.service.example /etc/systemd/system/cetd.service<br>
     > sudo ln -s /etc/systemd/system/cetd.service /etc/systemd/system/multi-user.target.wants/cetd.service<br>
     > sudo systemctl daemon-reload<br>
@@ -203,7 +205,7 @@ The diversity of node deployment solutions in the network contributes to the ove
     <details>
     <summary>1.10.2 config max file handle can be used by cetd to 655360:</summary>
 
-    - refer[link](https://medium.com/@muhammadtriwibowo/set-permanently-ulimit-n-open-files-in-ubuntu-4d61064429a) for details 
+    - refer [link](https://medium.com/@muhammadtriwibowo/set-permanently-ulimit-n-open-files-in-ubuntu-4d61064429a) for details 
     - In systemd, can config in `[Unit]` Section with: `LimitNOFILE=655360`
     - Check config status:
         > prlimit -p $(pidof cetd) | grep NOFILE<br>
@@ -245,7 +247,7 @@ The diversity of node deployment solutions in the network contributes to the ove
     - `"catching_up":true|false`  block sync indication, will be `false` when syncing finished
 
 - 1.12 Prepare command to export consensus pubkey of node, for further use
-    > echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator)"<br> 
+    > echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --home=${RUN_DIR}/.cetd)"<br> 
 
     example output: (testnet prefix is `cettestvalconspub`, mainnet prefix is `coinexvalconspub`)
 
@@ -279,7 +281,14 @@ The diversity of node deployment solutions in the network contributes to the ove
 <br>
 
 - 1.13 Switch to your personal computer before following steps (assume also use `Ubuntu 18.04`).
-    - Repeat actions in `1.3` and `1.4`
+    - Repeat actions in `1.3`
+
+    - export validator ip, so that we can send `Create Validator` tx to it
+        > #export Node Name, e.g.: MyAwesomeNode. (please keep the ' marks) <br>
+        > export VALIDATOR_MONIKER=~~'`<your_moniker_name>`'~~<br>
+        > #export Node's public IP <br>
+        > export VALIDATOR_PUBLIC_IP=~~`<validator_public_ip>`~~<br>
+
     - Check exported variables:
         > [ "${VALIDATOR_PUBLIC_IP}" != "" ] && echo "OK" || echo "ERROR"<br>
         > [ "${CETCLI_URL}" != "" ] && echo "OK" || echo "ERROR"<br>
@@ -336,7 +345,7 @@ The diversity of node deployment solutions in the network contributes to the ove
     > echo ${VALIDATOR_OPERATOR_ADDR}
 
     For testnet, faucet can be found in [link](https://github.com/coinexchain/testnets)<br>
-    e.g.: [ faucet address](http://18.140.188.15/) for testnet `coinexdex-test2003`
+    e.g.: [ faucet address](http://18.190.80.148/) for testnet `coinexdex-test2004`
 
 - 1.17 [Optional] Query balance:
     > ./cetcli q account $(./cetcli keys show ${KEY_NAME} -a) --chain-id=${CHAIN_ID}
@@ -499,8 +508,9 @@ The diversity of node deployment solutions in the network contributes to the ove
     ```
 
 - Do I in vaidator set?<br>
-    `NOTES: Need to execute on your server.`
-    > ./cetcli q tendermint-validator-set --chain-id=${CHAIN_ID} | grep $(./cetd tendermint show-validator) && echo "in validator set" || echo "not in validator set"
+    `NOTES: Need to execute on your server and after your server is synced up`<br>
+    ` your node is synced up when result of command "{RUN_DIR}/cetcli status" contains "catching_up":false `
+    > ./cetcli q tendermint-validator-set --chain-id=${CHAIN_ID} | grep $(./cetd tendermint show-validator --home=${RUN_DIR}/.cetd ) && echo "in validator set" || echo "not in validator set"
 
     if shows "in validator set", then your node is validator now. 
 

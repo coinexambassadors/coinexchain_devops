@@ -96,9 +96,11 @@
     export TESTNET_EXPLORER_URL=http://47.244.44.205/
     ```
 
-- 1.4 确定安装参数, 以执行目录/home/ubuntu为例:
+- 1.4 确定安装参数, 以执行目录/opt/cet为例:
     > \#软件安装目录<br>
-    > export RUN_DIR=~~`/home/ubuntu`~~<br>
+    > export RUN_DIR=~~`/opt/cet`~~<br>
+    > sudo mkdir -p ${RUN_DIR}<br>
+    > sudo chown $USER ${RUN_DIR}<br>
     > \#节点名称, 比如My Awesome Node, 请保留下行中name前后的`'`号<br>
     > export VALIDATOR_MONIKER='~~`<your_moniker_name>`~~'<br>
     > \#节点的公网IP <br>
@@ -124,15 +126,15 @@
     </details>
 
 - 1.6 初始化节点数据
-    > ${RUN_DIR}/cetd init ${VALIDATOR_MONIKER} --chain-id=${CHAIN_ID}
+    > ${RUN_DIR}/cetd init ${VALIDATOR_MONIKER} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd
 
-    **`NOTES: >>>YOUR NODE's CONSENSUS PUBKEY are generated in ~/.cetd, PLEASE DO BACKUP.<<<`**
+    **`NOTES: >>>YOUR NODE's CONSENSUS PUBKEY are generated in ${RUN_DIR}/.cetd, PLEASE DO BACKUP.<<<`**
     <details>
-    <summary>建议进行节点私钥备份:</summary>
-    本步骤会将节点启动时的配置及数据目录(默认为 ~/.cetd )进行初始化, >>>请备份并保管好以下文件<<< <br>
+    <summary>>>> 建议进行节点私钥备份: <<< </summary>
+    本步骤会将节点启动时的配置及数据目录(默认为 ${RUN_DIR}/.cetd )进行初始化, >>>请备份并保管好以下文件<<< <br>
 
     ```shell
-    /home/ubuntu/.cetd
+    ${RUN_DIR}/.cetd
     ├── config
     │   ├── app.toml                   <- 业务层配置
     │   ├── config.toml                <- 共识及P2P层配置
@@ -146,7 +148,7 @@
     </details>  
 
 - 1.7 应用网络初始配置genesis.json
-    > cp ${RUN_DIR}/genesis.json ~/.cetd/config/genesis.json
+    > cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json
 
 - 1.8 设置节点对外IP地址.
     > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=external_address value='\\"tcp://${VALIDATOR_PUBLIC_IP}:26656\\"' backup=true"
@@ -160,13 +162,14 @@
     
 - 1.10 启动全节点
     <br>可通过以下命令来启动节点, 但推荐使用Systemd/Supervisor等来启动.
-    > ${RUN_DIR}/cetd start
+    > ${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd
 
     <details>
     <summary>1.10-操作样例, 以`systemd`管理`cetd`举例:</summary>
 
     **<br>`以下是样例, 具体systemd配置细节及日志管理, 请自行设计方案`**    
 
+    > ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd' backup=true"<br>
     > sudo mv ${RUN_DIR}/cetd.service.example /etc/systemd/system/cetd.service<br>
     > sudo ln -s /etc/systemd/system/cetd.service /etc/systemd/system/multi-user.target.wants/cetd.service<br>
     > sudo systemctl daemon-reload<br>
@@ -231,7 +234,7 @@
     - `"catching_up":true|false`  表示当前是否正在从网络同步区块, false表示已经是最新块状态
 
 - 1.12 获取节点共识consensus pubkey, 供后续创建验证节点使用
-    > echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator)"<br> 
+    > echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --home=${RUN_DIR}/.cetd)"<br>  
 
     样例输出: (测试网前缀`cettestvalconspub`, 主网前缀`coinexvalconspub`)
 
@@ -318,7 +321,8 @@
     > echo ${VALIDATOR_OPERATOR_ADDR}
 
     如果是测试网络, 可以从水龙头获取测试币. 水龙头地址请查找[链接](https://github.com/coinexchain/testnets)<br>
-    比如: 测试网`coinexdex-test2003`[水龙头地址](http://18.140.188.15/)
+    比如: 测试网`coinexdex-test2004`[水龙头地址](http://18.190.80.148/)
+
 
 - 1.17 [可选] 查询地址余额:
     > ./cetcli q account $(./cetcli keys show ${KEY_NAME} -a) --chain-id=${CHAIN_ID}
@@ -480,9 +484,10 @@
     ...
     ```
 
-- Do I in vaidator set?<br>
-    `NOTES: Need to execute on your server.`
-    > ./cetcli q tendermint-validator-set --chain-id=${CHAIN_ID} | grep $(./cetd tendermint show-validator) && echo "in validator set" || echo "not in validator set"
+- 我的节点是否已经处于验证人状态?<br>
+    `注意: 需要在运行cetd的服务器上执行以下命令, 并要求cetd已经同步完成.`<br>
+    `  {RUN_DIR}/cetcli status 命令输出包含 "catching_up":false 时表示cetd已经同步完成`
+    > ./cetcli q tendermint-validator-set --chain-id=${CHAIN_ID} | grep $(./cetd tendermint show-validator --home=${RUN_DIR}/.cetd ) && echo "in validator set" || echo "not in validator set"
 
     输出"in validator set"时, 表示相关你的验证人节点已经建立完成.
 
