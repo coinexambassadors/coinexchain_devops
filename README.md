@@ -1,6 +1,6 @@
 ## Introduction
 
-[中文版本指南 Chinese Version Guides](./README_zh.md)
+[Chinese Version Guides 中文版本指南 ](./README_zh.md)
 
 <details>
 <summary>Disclaimer and Conventions:</summary>
@@ -362,16 +362,19 @@ The diversity of node deployment solutions in the network contributes to the ove
     - check:
         > [ "${VALIDATOR_CONSENSUS_PUBKEY}" != "" ] && echo "OK" || echo "ERROR"<br>
 
-- 1.18.2 prepare validator identity, for customized validator icon<br>
-    - 从https://keybase.io网站注册后, 上传自定义图标, 并获得相应的identity
-    - 比如[ViaWallet](https://keybase.io/viawallet)在测试网中使用的identity是`9A30CBDA5872CED8`
-        <details>
-        <summary>identity example</summary>
+- 1.18.2 prepare validator identity, so we can see your customized validator icon in chain explorer<br>
+    - please create a new account in https://keybase.io
+    - upload your icon
+    - also get your identity
+        - e.g.: the identity of [ViaWallet](https://keybase.io/viawallet) in testnet is `9A30CBDA5872CED8`
+            <details>
+            <summary>identity example</summary>
 
-        ![example_identity](./images/keybase_identity.png)
+            ![example_identity](./images/keybase_identity.png)
 
-        </details>
-    - 导出:
+            </details>
+
+    - export bash variables:
         > export VALIDATOR_IDENTITY=~~`<REPLACE_WITH_YOUR_IDENTITY>`~~<br>
         > [ "${VALIDATOR_IDENTITY}" != "" ] && echo "OK" || echo "ERROR"<br>
 
