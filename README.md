@@ -174,7 +174,7 @@ The diversity of node deployment solutions in the network contributes to the ove
     
 - 1.10 Start your node
     <br>Could start with following command, But recommend to start your node with software like Systemd or Supervisor
-    > nohup ${RUN_DIR}/cetd start &
+    > ${RUN_DIR}/cetd start
 
     <details>
     <summary>1.10 operation example: (use `systemd` to manage `cetd`)</summary>

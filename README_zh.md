@@ -160,7 +160,7 @@
     
 - 1.10 启动全节点
     <br>可通过以下命令来启动节点, 但推荐使用Systemd/Supervisor等来启动.
-    > nohup ${RUN_DIR}/cetd start &
+    > ${RUN_DIR}/cetd start
 
     <details>
     <summary>1.10-操作样例, 以`systemd`管理`cetd`举例:</summary>
