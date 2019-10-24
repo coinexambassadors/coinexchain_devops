@@ -365,9 +365,15 @@ The diversity of node deployment solutions in the network contributes to the ove
 - 1.18.2 prepare validator identity, for customized validator icon<br>
     - 从https://keybase.io网站注册后, 上传自定义图标, 并获得相应的identity
     - 比如[ViaWallet](https://keybase.io/viawallet)在测试网中使用的identity是`9A30CBDA5872CED8`
+        <details>
+        <summary>identity example</summary>
+
+        ![example_identity](./images/keybase_identity.png)
+
+        </details>
     - 导出:
-    > export VALIDATOR_IDENTITY=~~`<REPLACE_WITH_YOUR_IDENTITY>`~~<br>
-    > [ "${VALIDATOR_IDENTITY}" != "" ] && echo "OK" || echo "ERROR"<br>
+        > export VALIDATOR_IDENTITY=~~`<REPLACE_WITH_YOUR_IDENTITY>`~~<br>
+        > [ "${VALIDATOR_IDENTITY}" != "" ] && echo "OK" || echo "ERROR"<br>
 
 - 1.18.3 Send CreateValidator tx to become a validator 
     > ./cetcli tx staking create-validator \\\
