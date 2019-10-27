@@ -233,6 +233,9 @@
     - `"latest_block_height":"83274"`  本节点当前高度
     - `"catching_up":true|false`  表示当前是否正在从网络同步区块, false表示已经是最新块状态
 
+
+**`注意: >>>在进行后续步骤前, 请等待节点块同步至最新块. (1.11输出中包含"catching_up":false时, 表示已经同步到了最新块) <<<`**
+
 - 1.12 获取节点共识consensus pubkey, 供后续创建验证节点使用
     > echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --home=${RUN_DIR}/.cetd)"<br>  
 
