@@ -246,6 +246,9 @@ The diversity of node deployment solutions in the network contributes to the ove
     - `"latest_block_height":"83274"`  latest height of current Node
     - `"catching_up":true|false`  block sync indication, will be `false` when syncing finished
 
+
+**`NOTES: >>>Wait your node is catched up before further setup actions.<<<`**
+
 - 1.12 Prepare command to export consensus pubkey of node, for further use
     > echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --home=${RUN_DIR}/.cetd)"<br> 
 
