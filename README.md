@@ -247,7 +247,8 @@ The diversity of node deployment solutions in the network contributes to the ove
     - `"catching_up":true|false`  block sync indication, will be `false` when syncing finished
 
 
-**`NOTES: >>>Wait your node is catched up before further setup actions.<<<`**
+**`NOTES: >>>Wait until your node is catched up before further setup actions. <<<`**<br>
+**`It's catched up, when response of 1.11 contains "catching_up":false.`**
 
 - 1.12 Prepare command to export consensus pubkey of node, for further use
     > echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --home=${RUN_DIR}/.cetd)"<br> 
