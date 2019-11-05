@@ -595,6 +595,13 @@ So far, the deployment of stand-alone validator has been completed.
 
 ---
 
+## Monitoring
+- https://coinexchain.github.io/dex-docs/docs/13_monitoring/
+- https://forum.coinex.org/t/coinexchain/164
+- https://forum.coinex.org/t/aws-lambda-coinexchain/166
+
+---
+
 ## Community and Docs
 - [Join developer channel](https://join.slack.com/t/coinexchain/shared_invite/enQtNzA0NjU5ODc3MjM0LTk3NWUzMDA2YmU0NTc5MDg2NDI3NmRjM2VkNzYzNjIyZWM0NzZhMWIwMWQxNGJjNmI3NjVkZWIxZWUwNjJmYTI)
 - [Docs](https://github.com/coinexchain/dex-manual)
