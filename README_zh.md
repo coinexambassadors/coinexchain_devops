@@ -573,6 +573,7 @@
 
 ## 节点监控
 请参考社区中的监控方案:
+- https://coinexchain.github.io/dex-docs/docs/13_monitoring/
 - https://forum.coinex.org/t/coinexchain/164
 - https://forum.coinex.org/t/aws-lambda-coinexchain/166
 
