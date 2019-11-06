@@ -580,6 +580,7 @@ So far, the deployment of stand-alone validator has been completed.
 - [What's Tendermint KMS?](https://github.com/tendermint/kms)
 - Tools preparation: [link](https://github.com/tendermint/kms#installation)
 - Config details [link](https://github.com/tendermint/kms#usage) and [tendermint kms with yubihsm2](https://github.com/tendermint/kms/blob/master/README.yubihsm.md)
+- [Community practice](https://forum.coinex.org/t/coinex-chain-dex/167)
 
 - Example diagram:
 
