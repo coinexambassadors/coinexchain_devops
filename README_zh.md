@@ -557,6 +557,7 @@
 - [什么是Tendermint KMS?](https://github.com/tendermint/kms)
 - 工具编译请参考[链接](https://github.com/tendermint/kms#installation)
 - 配置请参考[链接](https://github.com/tendermint/kms#usage)和[tendermint kms with yubihsm](https://github.com/tendermint/kms/blob/master/README.yubihsm.md)
+- [社区实践](https://forum.coinex.org/t/coinex-chain-dex/167)
 
 - 部署示意图如下:
 
