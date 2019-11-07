@@ -80,21 +80,21 @@
 
 - 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用. 以下参数以[coinexdex-test2005](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2005)为示例:
 
-```
-export CHAIN_ID=coinexdex-test2005
-export CHAIN_SEEDS=8a378459b49ddcf2931ba968dc214621a48d22b3@47.75.208.217:26656,fe3b227eedd5bb97cd72ff40df31050434f7e883@47.52.106.214:26656
-export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2005
-export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
-export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
-export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
-export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
-export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
+    ```
+    export CHAIN_ID=coinexdex-test2005
+    export CHAIN_SEEDS=8a378459b49ddcf2931ba968dc214621a48d22b3@47.75.208.217:26656,fe3b227eedd5bb97cd72ff40df31050434f7e883@47.52.106.214:26656
+    export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2005
+    export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
+    export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
+    export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
+    export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
+    export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
-export FAUCET_URL=
-export REST_API=http://47.75.208.217:1317/swagger/
-export TESTNET_RPC_URL=47.75.208.217:26657
-export TESTNET_EXPLORER_URL=testnet.coinex.org
-```
+    export FAUCET_URL=
+    export REST_API=http://47.75.208.217:1317/swagger/
+    export TESTNET_RPC_URL=47.75.208.217:26657
+    export TESTNET_EXPLORER_URL=testnet.coinex.org
+    ```
 
 - 1.4 确定安装参数, 以执行目录/opt/cet为例:
     > \#软件安装目录<br>
@@ -125,13 +125,14 @@ export TESTNET_EXPLORER_URL=testnet.coinex.org
     ---
     </details>
 
-- 1.6 初始化节点数据
+- 1.6 初始化节点数据.
+    > #本步骤会将节点启动时的配置及数据目录(默认为 ${RUN_DIR}/.cetd )进行初始化<br>
     > ${RUN_DIR}/cetd init ${VALIDATOR_MONIKER} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd
 
-    **`NOTES: >>>YOUR NODE's CONSENSUS PUBKEY are generated in ${RUN_DIR}/.cetd, PLEASE DO BACKUP.<<<`**
-    <details>
-    <summary>>>> 建议进行节点私钥备份: <<< </summary>
-    本步骤会将节点启动时的配置及数据目录(默认为 ${RUN_DIR}/.cetd )进行初始化, >>>请备份并保管好以下文件<<< <br>
+    **`注意1: >>> 初始化时指定--home参数后, 后续所有cetd命令(包括cetd start启动节点)都需要加上--home参数.<<< `**<br>
+    比如: `1.4`中指定`RUN_DIR=/opt/cet`, 启动节点时需要在`cetd start`后加上参数 `--home=/opt/cetd/.cetd`<br><br>
+    **`注意2: >>> 节点的共识私钥会生成在${RUN_DIR}/.cetd中的priv_validator_key.json文件中, 请一定备份.<<<`**<br>
+    请备份并保管好以下文件: <br>
 
     ```shell
     ${RUN_DIR}/.cetd
@@ -145,7 +146,7 @@ export TESTNET_EXPLORER_URL=testnet.coinex.org
         └── priv_validator_state.json  <- 节点共识最新状态
     ```
     ---
-    </details>  
+
 
 - 1.7 应用网络初始配置genesis.json
     > cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json

@@ -139,12 +139,13 @@ The diversity of node deployment solutions in the network contributes to the ove
 - 1.6 Init node's data directory
     > ${RUN_DIR}/cetd init ${VALIDATOR_MONIKER} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd
 
-    **`NOTES: >>>YOUR NODE's CONSENSUS PRIVATE KEY are generated in ${RUN_DIR}/.cetd, PLEASE DO BACKUP.<<<`**
-    <details>
-    <summary> >>> Do backup the consensus private key <<<</summary>
 
-    The initialized data directory will be `${RUN_DIR}/.cetd` by default, >>> **`PLEASE DO BACKUP FOLLOWING FILES`** <<< <br>
+    **`NOTES 1: >>> after init with --home parameter, all cetd commands(include cetd start) needs run with same --home parameter<<< `**<br>
+    e.g.: if in `1.4` you specify `RUN_DIR=/opt/cet`, then should run `cetd start --home=/opt/cetd/.cetd` to start node<br><br>
 
+    **`NOTES 2: >>>YOUR NODE's CONSENSUS PRIVATE KEY are generated in ${RUN_DIR}/.cetd, PLEASE DO BACKUP.<<<`**<br>
+
+    Do backup following files, include the consensus private key:
     ```shell
     ${RUN_DIR}/.cetd
     ├── config
