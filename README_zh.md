@@ -78,22 +78,21 @@
         - `26659`: 如果使用下文中`方案3`时, 供与tmkms连接使用.
         - `1317`:  按需开放或只对可信网段开放, 供cetcli运行的rest-server使用, 提供基于REST接口的交互及swagger文档
 
-- 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用. 以下参数以[coinexdex-test2004](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2004)为示例:
+- 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用. 以下参数以[coinexdex-test2005](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2005)为示例:
     ```
-    export CHAIN_ID=coinexdex-test2004
-    export CHAIN_SEEDS=b71a1fbfd2aeaad55eec6d2e61c4d2b431a20e09@3.132.21.89:26656,5b8ee18bc3745f2e6d141ea7133a73013b8da200@18.190.80.148:26656
-    export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2004
-    export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
-    export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
-    export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
-    export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
-    export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
+    export CHAIN_ID=coinexdex-test2005
+export CHAIN_SEEDS=8a378459b49ddcf2931ba968dc214621a48d22b3@47.75.208.217:26656,fe3b227eedd5bb97cd72ff40df31050434f7e883@47.52.106.214:26656
+export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2005
+export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
+export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
+export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
+export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
+export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
-    export FAUCET_URL=http://18.190.80.148
-    export REST_API=http://18.190.80.148:1317/swagger/
-    export REST_API=http://3.132.21.89:1317/swagger/
-    export TESTNET_RPC_URL=18.190.80.148:26657
-    export TESTNET_EXPLORER_URL=http://47.244.44.205/
+export FAUCET_URL=
+export REST_API=http://47.75.208.217:1317/swagger/
+export TESTNET_RPC_URL=47.75.208.217:26657
+export TESTNET_EXPLORER_URL=testnet.coinex.org
     ```
 
 - 1.4 确定安装参数, 以执行目录/opt/cet为例:
