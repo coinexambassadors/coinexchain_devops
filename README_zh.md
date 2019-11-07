@@ -79,8 +79,9 @@
         - `1317`:  按需开放或只对可信网段开放, 供cetcli运行的rest-server使用, 提供基于REST接口的交互及swagger文档
 
 - 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用. 以下参数以[coinexdex-test2005](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2005)为示例:
-    ```
-    export CHAIN_ID=coinexdex-test2005
+
+```
+export CHAIN_ID=coinexdex-test2005
 export CHAIN_SEEDS=8a378459b49ddcf2931ba968dc214621a48d22b3@47.75.208.217:26656,fe3b227eedd5bb97cd72ff40df31050434f7e883@47.52.106.214:26656
 export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2005
 export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
@@ -93,7 +94,7 @@ export FAUCET_URL=
 export REST_API=http://47.75.208.217:1317/swagger/
 export TESTNET_RPC_URL=47.75.208.217:26657
 export TESTNET_EXPLORER_URL=testnet.coinex.org
-    ```
+```
 
 - 1.4 确定安装参数, 以执行目录/opt/cet为例:
     > \#软件安装目录<br>
