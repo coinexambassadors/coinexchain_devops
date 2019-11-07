@@ -285,8 +285,10 @@
     > ./cetcli status | grep ${VALIDATOR_PUBLIC_IP}  && echo "OK" || echo "ERROR"<br>
 
 - 1.15 [个人电脑]创建帐户<br>
-    **`NOTES: >>>your mnemonic passphrase will print out by this command, store it safely<<<`**<br>
-    **`NOTES: >>>your private keystore will be in folder: ~/.cetcli, PLEASE DO BACKUP<<<`**
+    **`注意 1: >>>帐户的助记词会在这个命令中输出, 请一定记得保管!!!!!!<<<`**<br>
+    **`注意 2: >>>你的keystore文件会存储在: ~/.cetcli 中, 也请一定备份这个目录<<<`**<br>
+    **`注意 3: >>>也需要记住相应帐户的keystore加密密码, 后续才能使用相应的帐户<<<`**<br>
+
     > \#example export KEY_NAME=my_key<br>
     > export KEY_NAME=~~`<replace_with_your_local_key_name>`~~ <br>
     > ./cetcli keys add ${KEY_NAME}<br>
