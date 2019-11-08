@@ -1,23 +1,10 @@
 # Validator + Sentry Nodes
 
 **推荐：每个节点使用一台服务器**
+
 **方案概述**
 
 本方案使用两个`Sentry Node`节点，一个`Validator Node`节点，总计三台服务器。
-
-
-
-
-
-## 使用Sentry nodes 方式部署Genesis节点
-
-`sentry node` 是一个普通的全节点，负责与网络中的其它节点交换数据，同步区块、交易等数据。
-
-### 部署 `sentry node`(普通全节点)
-
-
-
-
 
 
 ## 生成节点，获取节点的`Seed ID`
@@ -85,6 +72,13 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 >  ${RUN_DIR}/cetd tendermint show-node-id --home=${RUN_DIR}/.cetd <br>
 >
 
+将获取的seed id 记录下来，在接下来节点的配置文件中需要使用.
+
+
+<br>
+<br>
+<br>
+<br>
 
 ## Sentry Node 节点配置文件的设置
 
@@ -93,7 +87,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 >	export RUN_DIR=~~`/opt/cet`~~ <br>
 >	export VALIDATOR_ID=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656
 
--  1.1 设置节点的配置文件(config.toml)
+-  1.2 设置节点的配置文件(config.toml)
 
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=seeds  <br>
 > value='\\"${CHAIN_SEEDS}\\"' backup=true" <br>
@@ -110,7 +104,12 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 - 	1.2 运行节点
 
-参照下面的节点运行方案
+[参照下面的节点运行方案](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#%E8%BF%90%E8%A1%8C%E8%8A%82%E7%82%B9)
+
+<br>
+<br>
+<br>
+<br>
 
 ## Validator Node 节点配置文件的设置
 
@@ -153,13 +152,18 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 参照下面的将节点设置为Validator的方案
 
-## 运行节点
+
+<br>
+<br>
+<br>
+<br>
+
+## [运行节点]:
 
 可通过以下命令来启动节点, 但推荐使用Systemd/Supervisor等来启动.
 
 > ${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd <br>
 > 
-
 
 <details>
 <summary> 以`systemd`管理`cetd`举例:</summary>
@@ -220,6 +224,11 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 </details>
 
+
+<br>
+<br>
+<br>
+<br>
 
 ## 将节点设置为Validator
 
