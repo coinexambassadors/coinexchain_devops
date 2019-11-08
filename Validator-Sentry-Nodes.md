@@ -88,16 +88,20 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 ## Sentry Node 节点配置文件的设置
 
+-	1.1 设置Validator的seed id
+
+>	export VALIDATOR_ID=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656
+
 -  1.1 设置节点的配置文件(config.toml)
 
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=seeds  <br>
 > value='\\"${CHAIN_SEEDS}\\"' backup=true" <br>
 > #
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=persistent_peers <br>
-> value='\"234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656\"' backup=true" <br>
+> value='\\"${VALIDATOR_ID}\\"' backup=true" <br>
 > #   	
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=private_peer_ids <br>
-> value='\"3s2ee17a695695c3133423c4e75fc0636121a3b@3.134.44.201:26656\"' backup=true" <br>
+> value='\\"${VALIDATOR_ID}\\"' backup=true" <br>
 > #
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=addr_book_strict <br> 
 > value='false' backup=true" <br>
@@ -109,13 +113,17 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 ## Validator Node 节点配置文件的设置
 
+-	1.1 设置 sentry node 的seed id
+
+> 	export SENTRY_NODE_IDS=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656; 1231e234a695345c3139953c4e75fc0636121a3b@30.124.14.231:26656
+
 -  1.1 设置节点的配置文件(config.toml)
   
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=pex <br>
 > value='false' backup=true" <br>
 > # 
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=persistent_peers <br>
-> value='\"1231e234a695345c3139953c4e75fc0636121a3b@3.134.44.201:26656\"' backup=true" <br>
+> value='\\"${SENTRY_NODE_IDS}\\"' backup=true" <br>
 > #   	
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=private_peer_ids <br>
 > value='omitted' backup=true" <br>
