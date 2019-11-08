@@ -101,11 +101,16 @@ export TESTNET_EXPLORER_URL=
     > export RUN_DIR=~~`/opt/cet`~~<br>
     > sudo mkdir -p ${RUN_DIR}<br>
     > sudo chown $USER ${RUN_DIR}<br>
-    > \#节点名称, 比如My Awesome Node, 请保留下行中name前后的`'`号<br>
-    > export VALIDATOR_MONIKER='~~`<your_moniker_name>`~~'<br>
     > \#节点的公网IP <br>
     > export VALIDATOR_PUBLIC_IP=~~`<validator_public_ip>`~~<br>
+    > \#节点名称, 比如ViaWallet在测试网中的moniker name为ViaWallet, 请保留下行中name前后的`'`号<br>
+    > export VALIDATOR_MONIKER='~~`<your_moniker_name>`~~'<br>
+	<details>
+	<summary>validator moniker name example</summary>
 
+	![example_moniker](./images/validator_moniker.png)
+
+	</details>
 
 - 1.5 将软件包下载至服务器
     > \# 下载节点软件`cetd`, 节点客户端`cetcli`, 及网络初始配置`genesis.json`<br>
