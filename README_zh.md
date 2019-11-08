@@ -290,6 +290,7 @@ export TESTNET_EXPLORER_URL=
     > ./cetcli status | grep ${VALIDATOR_PUBLIC_IP}  && echo "OK" || echo "ERROR"<br>
 
 - 1.15 [个人电脑]创建帐户<br>
+- 1.15 通过cetcli生成新账户
     **`注意 1: >>>帐户的助记词会在这个命令中输出, 请一定记得保管!!!!!!<<<`**<br>
     **`注意 2: >>>你的keystore文件会存储在: ~/.cetcli 中, 也请一定备份这个目录<<<`**<br>
     **`注意 3: >>>也需要记住相应帐户的keystore加密密码, 后续才能使用相应的帐户<<<`**<br>
@@ -325,7 +326,37 @@ export TESTNET_EXPLORER_URL=
     ---
     <br><br>
     </details>  
+- 1.152 通过cetcli导入助记词
+	如果已经在ViaWallet等应用中创建过地址并保存了助记词，可以通过cetcli导入助记词
+    **`注意 1: >>>你的keystore文件将会存储在: ~/.cetcli 中, 请一定备份这个目录<<<`**<br>
+    **`注意 2: >>>需要记住相应帐户的keystore加密密码, 后续才能使用相应的帐户<<<`**<br>
+    > \#example export KEY_NAME=my_key<br>
+    > export KEY_NAME=~~`<replace_with_your_local_key_name>`~~ <br>
+    > ./cetcli keys add ${KEY_NAME} --recover<br>
 
+    <details>
+    <summary>example output:</summary>
+
+    ```
+    j@j ~ $ export KEY_NAME=bob
+    j@j ~ $ ./cetcli keys add ${KEY_NAME} --recover
+	Enter a passphrase to encrypt your key to disk:
+	Repeat the passphrase:
+	> Enter your bip39 mnemonic
+	kitchen keen toe vault elder legal robust hen month hold monkey add taste rocket cheap elevator foil face hold gossip attitude flavor thought thought
+
+	- name: bob
+  	type: local
+  	address: coinex17j0tajnkyu7pk8slgt4s9xtqnl0fmum3fll8lq
+  	pubkey: coinexpub1addwnpepqf0ha2nm5hh8szq59phrtu2yxd6veyfq0mgkxeydpcy7q3h2kq08jhy4fjx
+  	mnemonic: ""
+  	threshold: 0
+  	pubkeys: []
+    j@j ~ $
+    ```
+    ---
+    <br><br>
+    </details>
 - 1.16 [个人电脑] 查到帐户地址后, 可从CoinEx交易所提现操作到链上地址.
     > export VALIDATOR_OPERATOR_ADDR=$(./cetcli keys show ${KEY_NAME} -a)<br>
     > [ "${VALIDATOR_OPERATOR_ADDR}" != "" ] && echo "OK" || echo "ERROR"<br>

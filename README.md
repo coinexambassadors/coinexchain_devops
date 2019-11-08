@@ -314,8 +314,10 @@ export TESTNET_EXPLORER_URL=
     > ./cetcli status | grep ${VALIDATOR_PUBLIC_IP}  && echo "OK" || echo "ERROR"<br>
 
 - 1.15 Create account for validator operator<br>
+- 1.151 Create new account by cetcli
     **`NOTES: >>>your mnemonic passphrase will print out by this command, store it safely<<<`**<br>
     **`NOTES: >>>your private keystore will be in folder: ~/.cetcli, PLEASE DO BACKUP<<<`**
+    **`NOTES: >>>in order to continue using the corresponding account, please remember passphrase<<<`**
     > \#example export KEY_NAME=my_key<br>
     > export KEY_NAME=~~`<replace_with_your_local_key_name>`~~ <br>
     > ./cetcli keys add ${KEY_NAME}<br>
@@ -347,6 +349,37 @@ export TESTNET_EXPLORER_URL=
     ---
     <br><br>
     </details>  
+- 1.152 Import mnemonic passphrase by cetcli
+	If you have already created an address in an application such as ViaWallet and saved the mnemonic, you can import the mnemonic by cetcli.
+    **`NOTES: >>>your private keystore will be in folder: ~/.cetcli, PLEASE DO BACKUP<<<`**	
+	**`NOTES: >>>in order to continue using the corresponding account, please remember passphrase<<<`**
+    > \#example export KEY_NAME=my_key<br>
+    > export KEY_NAME=~~`<replace_with_your_local_key_name>`~~ <br>
+    > ./cetcli keys add ${KEY_NAME} --recover<br>
+
+    <details>
+    <summary>example output:</summary>
+
+    ```
+    j@j ~ $ export KEY_NAME=bob
+    j@j ~ $ ./cetcli keys add ${KEY_NAME} --recover
+    Enter a passphrase to encrypt your key to disk:
+    Repeat the passphrase:
+    > Enter your bip39 mnemonic
+    kitchen keen toe vault elder legal robust hen month hold monkey add taste rocket cheap elevator foil face hold gossip attitude flavor thought thought
+
+    - name: bob
+    type: local
+    address: coinex17j0tajnkyu7pk8slgt4s9xtqnl0fmum3fll8lq
+    pubkey: coinexpub1addwnpepqf0ha2nm5hh8szq59phrtu2yxd6veyfq0mgkxeydpcy7q3h2kq08jhy4fjx
+    mnemonic: ""
+    threshold: 0
+    pubkeys: []
+    j@j ~ $
+    ```
+    ---
+    <br><br>
+    </details>
 
 - 1.16 Withdraw CET from CoinEx Exchange to your new created account address
     > \# get account address of validator operator<br>
