@@ -50,6 +50,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 <details>
 <summary>如何验证下载的软件?</summary>
+	
 > curl ${MD5_CHECKSUM_URL} > ${RUN_DIR}/md5.sum <br>
 > md5sum ${RUN_DIR}/cetd ${RUN_DIR}/cetcli ${RUN_DIR}/genesis.json ${RUN_DIR}/cetd.service.example <br>
 > 将生成的输出与文件中的数据进行比较
@@ -74,10 +75,6 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 将获取的seed id 记录下来，在接下来节点的配置文件中需要使用.
 
-
-<br>
-<br>
-<br>
 <br>
 
 ## Sentry Node 节点配置文件的设置
@@ -85,7 +82,8 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 -	1.1 设置Validator的seed id
 
 >	export RUN_DIR=~~`/opt/cet`~~ <br>
->	export VALIDATOR_ID=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656
+>	export VALIDATOR_ID=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656 <br>
+>	export CHAIN_SEEDS=4d61ee17a695695c3139953c4e75fc0636121a3b@3.134.44.201:26656 <br>
 
 -  1.2 设置节点的配置文件(config.toml)
 
@@ -106,9 +104,6 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 [参照下面的节点运行方案](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#%E8%BF%90%E8%A1%8C%E8%8A%82%E7%82%B9)
 
-<br>
-<br>
-<br>
 <br>
 
 ## Validator Node 节点配置文件的设置
@@ -152,10 +147,6 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 [参照下面的将节点设置为Validator的方案](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#%E5%B0%86%E8%8A%82%E7%82%B9%E8%AE%BE%E7%BD%AE%E4%B8%BAvalidator)
 
-
-<br>
-<br>
-<br>
 <br>
 
 ## [运行节点]:
@@ -224,10 +215,6 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 </details>
 
-
-<br>
-<br>
-<br>
 <br>
 
 ## 将节点设置为Validator
@@ -250,11 +237,11 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 -	1.1 设置环境变量
 
->	export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006	<br>
 >	export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli <br>
 >	export VALIDATOR_PUBLIC_IP=~~<validator_public_ip>~~ <br>
 > 	export VALIDATOR_MONIKER=~~<moniker_name>~~ <br>
 >  export CHAIN_ID=coinexdex-test1	<br>
+`export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006`
 
 `RUN_DIR` 为用户的自定义工作目录，以下示例以`/opt/node`为例
 
@@ -481,7 +468,7 @@ Commission:                 rate: 0.050000000000000000, maxRate: 0.2000000000000
 
 </details>
 
-*	将节点释放出监狱
+-	1.9 将节点释放出监狱
 
 当节点因为可用性差被关监狱时，可以使用下述命令，将节点释放出监狱.
 
