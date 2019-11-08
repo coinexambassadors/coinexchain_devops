@@ -146,11 +146,11 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 -	1.3  运行节点
 
-参照下面的节点运行方案
+[参照下面的节点运行方案](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#%E8%BF%90%E8%A1%8C%E8%8A%82%E7%82%B9)
 
-—	1.4 将该节点设置为 Validator 节点.
+-	1.4 将该节点设置为 Validator 节点
 
-参照下面的将节点设置为Validator的方案
+[参照下面的将节点设置为Validator的方案](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#%E5%B0%86%E8%8A%82%E7%82%B9%E8%AE%BE%E7%BD%AE%E4%B8%BAvalidator)
 
 
 <br>
@@ -167,7 +167,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 <details>
 <summary> 以`systemd`管理`cetd`举例:</summary>
-**1.1 以下是样例, 具体systemd配置细节及日志管理, 请自行设计方案**
+**1.1 以下是样例,具体systemd配置细节及日志管理, 请自行设计方案**
 
 >	ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart	<br>
 >	value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd' backup=true"	<br>
@@ -216,11 +216,11 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 检查输出：
 
-	*	`"id":"b5fedfeb14b7b84908ea0fc85b8799a1e78000fd"` 是节点在p2p网络中的ID
-	* 	`"rpc_address":"tcp://0.0.0.0:26657"`RPC端口可远程访问
-	*	`"rpc_address":"tcp://127.0.0.1:26657"` RPC端口只可本地访问
-	*	`"latest_block_height":"83274"` 本节点当前高度
-	* 	`"catching_up":true|false` 表示当前是否正在从网络同步区块, false表示已经是最新块状态
+*	`"id":"b5fedfeb14b7b84908ea0fc85b8799a1e78000fd"` 是节点在p2p网络中的ID
+* 	`"rpc_address":"tcp://0.0.0.0:26657"`RPC端口可远程访问
+*	`"rpc_address":"tcp://127.0.0.1:26657"` RPC端口只可本地访问
+*	`"latest_block_height":"83274"` 本节点当前高度
+* 	`"catching_up":true|false` 表示当前是否正在从网络同步区块, false表示已经是最新块状态
 
 </details>
 
@@ -276,8 +276,8 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 >	curl ${CETCLI_URL} > cetcli <br>
 >	chmod a+x ./cetcli <br>
 >	${RUN_DIR}/cetcli config node ${VALIDATOR_PUBLIC_IP}:26657 <br>
->	# 查看是否可以链接到远端节点
->  ${RUN_DIR}/cetcli status	
+>	#查看是否可以链接到远端节点 <br>
+>  ${RUN_DIR}/cetcli status <br>	
 > 
 
 -	1.3 创建帐户
@@ -370,7 +370,7 @@ j@j ~ $
 
 -	1.8 发送交易，使节点成为验证者
 
->	# Send CreateValidator tx to become a validator <br>
+>	#Send CreateValidator tx to become a validator<br>
 >	${RUN_DIR}/cetcli tx staking create-validator \ <br>
 >	--amount=500000000000000cet \ <br>
 >	--pubkey=${VALIDATOR_CONSENSUS_PUBKEY} \ <br>
