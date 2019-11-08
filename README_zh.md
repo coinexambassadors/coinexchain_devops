@@ -103,7 +103,7 @@ export TESTNET_EXPLORER_URL=
     > sudo chown $USER ${RUN_DIR}<br>
     > \#节点的公网IP <br>
     > export VALIDATOR_PUBLIC_IP=~~`<validator_public_ip>`~~<br>
-    > \#节点名称, 比如ViaWallet在测试网中的moniker name为ViaWallet, 请保留下行中name前后的`'`号<br>
+    > \#节点名称, 比如 moniker name 为 ViaWallet, 请保留下行中name前后的`'`号<br>
     > export VALIDATOR_MONIKER='~~`<your_moniker_name>`~~'<br>
 	<details>
 	<summary>validator moniker name example</summary>

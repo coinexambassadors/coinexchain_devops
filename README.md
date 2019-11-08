@@ -113,7 +113,7 @@ export TESTNET_EXPLORER_URL=
     > sudo chown $USER ${RUN_DIR}<br>
     > \#Node's public IP <br>
     > export VALIDATOR_PUBLIC_IP=~~`<validator_public_ip>`~~<br>
-    > \#Node Name, e.g.: ViaWallet. (please keep the `'` marks) <br>
+    > \#Node Name, e.g.: moniker name is ViaWallet. (please keep the `'` marks) <br>
     > export VALIDATOR_MONIKER='~~`<your_moniker_name>`~~'<br>
     
     <details>
