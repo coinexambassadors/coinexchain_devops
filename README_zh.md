@@ -356,7 +356,7 @@ export TESTNET_EXPLORER_URL=
         > [ "${VALIDATOR_CONSENSUS_PUBKEY}" != "" ] && echo "OK" || echo "ERROR"<br>
 
 - 1.18.2 准备节点的identity, 以便自定义的验证人节点图标<br>
-    - 从https://keybase.io网站注册后, 上传自定义图标, 并获得相应的identity
+    - 从 https://keybase.io 网站注册后, 上传自定义图标, 并获得相应的identity
     - 比如[ViaWallet](https://keybase.io/viawallet)在测试网中使用的identity是`9A30CBDA5872CED8`
         <details>
         <summary>identity example</summary>
