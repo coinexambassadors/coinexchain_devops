@@ -601,6 +601,10 @@ So far, the deployment of stand-alone validator has been completed.
     - the example diagram show two sentry nodes, choose your sentry node number accordingly
     - Validator operator can try to implement sentry node auto scaling or auto switch public ip solutions for better DDoS mitigation
 
+— Deploy doc:
+
+   [Refer Doc](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md)
+
 <br>
 <br>
 <br>

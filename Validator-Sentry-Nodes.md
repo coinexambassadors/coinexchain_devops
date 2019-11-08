@@ -19,18 +19,19 @@
         *   `26657`: 可以打开、也可以关闭，用于用户使用`cetcli`进行RPC 查询（如：账户信息、交易信息...）
 
 -   1.3 在shell中设置链的参数
-**示例**：`coinexdex-test1`测试链的参数
 
-```
-export CHAIN_ID=coinexdex-test1
-export CHAIN_SEEDS=4d61ee17a695695c3139953c4e75fc0636121a3b@3.134.44.201:26656
-export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006
-export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
-export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
-export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
-export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
-export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
-```
+    **示例**：`coinexdex-test1`测试链的参数
+    
+    ```
+    export CHAIN_ID=coinexdex-test1
+    export CHAIN_SEEDS=4d61ee17a695695c3139953c4e75fc0636121a3b@3.134.44.201:26656
+    export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006
+    export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
+    export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
+    export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
+    export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
+    export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
+    ```
 
 -   1.4 设置环境变量参数，使用`/opt/cet`作为`sentry node`的部署目录
 
@@ -39,14 +40,14 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 	> sudo chown $USER ${RUN_DIR} <br>
 	> export NODE_NAME='~~`ludete`~~' <br>
 
-*   1.5 下载节点软件到服务器
+-   1.5 下载节点软件到服务器
 
-> cd ${RUN_DIR}	<br>
-> curl ${CETD_URL} > cetd <br>
-> curl ${CETCLI_URL} > cetcli <br>
-> curl ${GENESIS_URL} > genesis.json <br>
-> curl ${CETD_SERVICE_CONF_URL} > cetd.service.example <br>
-> chmod a+x ${RUN_DIR}/cetd ${RUN_DIR}/cetcli <br>
+    > cd ${RUN_DIR}	<br>
+     curl ${CETD_URL} > cetd <br>
+     curl ${CETCLI_URL} > cetcli <br>
+     curl ${GENESIS_URL} > genesis.json <br>
+     curl ${CETD_SERVICE_CONF_URL} > cetd.service.example <br>
+     chmod a+x ${RUN_DIR}/cetd ${RUN_DIR}/cetcli <br>
 
 <details>
 <summary>如何验证下载的软件?</summary>
@@ -58,14 +59,14 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 - 	1.6 初始化节点目录
 
-> ${RUN_DIR}/cetd init ${NODE_NAME} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd <br>
+   > ${RUN_DIR}/cetd init ${NODE_NAME} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd <br>
  
 
 **注意：>>> 初始化时指定--home参数后, 后续所有cetd命令(包括cetd start启动节点)都需要加上--home参数.<<<**
 
 -	1.7 应用下载的genesis.json 文件
 
->	cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json
+>	cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json <br>
 >
 
 - 	1.8 获取节点的 `seed id`
@@ -80,6 +81,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 ## Sentry Node 节点配置文件的设置
 
 -	1.1 设置Validator的seed id
+
 
 >	export RUN_DIR=~~`/opt/cet`~~ <br>
 >	export VALIDATOR_ID=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656 <br>
@@ -96,13 +98,14 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=addr_book_strict value='false' backup=true" <br>
 > #
 
-*	seeds: cetd网络的种子节点标识，用于帮助新节点接入整个cetd网络，与网络中的其它节点进行交流。
-*	persistent_peers: 配置`validator`节点的标识，会持久链接`validator`节点，断开时，会进行重链；如果未在此处配置这个值，可能`sentry node`在达到链接最大值时，将与`validator`节点的链接随机断开。   	
-*	private_peer_ids: 配置`validator`节点的标识，当`sentry node`与网络中的其它节点进行IP地址交换时，不会将该IP地址暴露出去.
-*	addr_book_strict: 配置为true，允许`sentry node`链接不可路由的IP地址节点，因为`validator`可以处于保护的目的，处于内网中，不提供对外的IP地址。
+
+    *	seeds: cetd网络的种子节点标识，用于帮助新节点接入整个cetd网络，与网络中的其它节点进行交流。
+    *	persistent_peers: 配置`validator`节点的标识，会持久链接`validator`节点，断开时，会进行重链；如果未在此处配置这个值，可能`sentry node`在达到链接最大值时，将与`validator`节点的链接随机断开。   	
+    *	private_peer_ids: 配置`validator`节点的标识，当`sentry node`与网络中的其它节点进行IP地址交换时，不会将该IP地址暴露出去.
+    *	addr_book_strict: 配置为true，允许`sentry node`链接不可路由的IP地址节点，因为`validator`可以处于保护的目的，处于内网中，不提供对外的IP地址。
 
 
-- 	1.2 运行节点
+- 	1.3 运行节点
 
 [参照下面的节点运行方案](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#%E8%BF%90%E8%A1%8C%E8%8A%82%E7%82%B9)
 
@@ -124,18 +127,16 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=addr_book_strict value='false' backup=true" <br>
 > #
 
-*	pex: 设置为false,禁止validator节点与sentry node节点交换地址簿，保护validator节点的IP地址不会被泄漏出去.<br>
-*	persistent_peers: 用`逗号`分隔的`sentry node`节点的标识，validator链接这些`sentry node`节点与整个网络沟通.因为pex标识设置为false,如果验证者节点未配置这个值，会导致validator节点无法加入网络. <br>
-*	addr_book_strict: 设置为true，允许validator链接不可路由的内网IP的`sentry node`节点;因为有可能`validator`与`sentry node`位于同一个私有网络，它们之间通过私有网络进行交流. <br>
+    *	pex: 设置为false,禁止validator节点与sentry node节点交换地址簿，保护validator节点的IP地址不会被泄漏出去.<br>
+    *	persistent_peers: 用`逗号`分隔的`sentry node`节点的标识，validator链接这些`sentry node`节点与整个网络沟通.因为pex标识设置为false,如果验证者节点未配置这个值，会导致validator节点无法加入网络. <br>
+    *	addr_book_strict: 设置为true，允许validator链接不可路由的内网IP的`sentry node`节点;因为有可能`validator`与`sentry node`位于同一个私有网络，它们之间通过私有网络进行交流. <br>
 
 - 	1.3  获取节点的共识consensus pubkey, 供后续创建验证节点使用
 
 >	echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --home=${RUN_DIR}/.cetd)" <br>
 
-样例输出: (测试网前缀`cettestvalconspub`, 主网前缀`coinexvalconspub`)
-
-`cettestvalconspub1zcjduepqn926zz0lqt9dt83xfn9vflnxhrem644ep4k4qkgz2fjpef3402mqeuf2yz
-`
+   样例输出: (测试网前缀`cettestvalconspub`, 主网前缀`coinexvalconspub`)
+   `cettestvalconspub1zcjduepqn926zz0lqt9dt83xfn9vflnxhrem644ep4k4qkgz2fjpef3402mqeuf2yz`
 
 -	1.4  运行节点
 
@@ -217,7 +218,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 ## 将节点设置为Validator
 
-获取节点的共识`consensus pubkey`； 即1.3节命令行输出的应答
+导入获取的节点共识`consensus pubkey`：[即 1.3节的输出](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#validator-node-%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E8%AE%BE%E7%BD%AE) 
 
 >	export VALIDATOR_CONSENSUS_PUBKEY=cettestvalconspub1zcjduepqn926zz0lqt9dt83xfn9vflnxhrem644ep4k4qkgz2fjpef3402mqeuf2yz <br>
 

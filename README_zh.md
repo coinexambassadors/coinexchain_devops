@@ -578,6 +578,10 @@ export TESTNET_EXPLORER_URL=
     - 示例中只设置了两个哨兵节点, 节点运营者可根据自己的方案调整哨兵节点的数量
     - 节点运营者可以进一步尝试部署哨兵节点自动扩容, 自动换外部IP等防DDoS的方案.
 
+- 部署文档
+    
+    [参考文档](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md)
+
 <br>
 <br>
 <br>
@@ -605,6 +609,7 @@ export TESTNET_EXPLORER_URL=
     - Tendermint KMS需要部署在私有数据中心, 配合YubiHSM2进行使用
     - ValidatorNode可以部署在云端
     - ValidatorNode对块的共识签名会通过Tendermint KMS完成.
+   
 <br>
 <br>
 <br>
