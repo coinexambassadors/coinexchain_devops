@@ -70,7 +70,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 - 	1.6 初始化节点目录
 
-> ${RUN_DIR}/cetd init ${VALIDATOR_MONIKER} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd <br>
+> ${RUN_DIR}/cetd init ${NODE_NAME} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd <br>
  
 
 **注意：>>> 初始化时指定--home参数后, 后续所有cetd命令(包括cetd start启动节点)都需要加上--home参数.<<<**
@@ -91,7 +91,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 -  1.1 设置节点的配置文件(config.toml)
 
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=seeds  <br>
-> value='\"${CHAIN_SEEDS}\"' backup=true" <br>
+> value='\\"${CHAIN_SEEDS}\\"' backup=true" <br>
 > #
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=persistent_peers <br>
 > value='\"234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656\"' backup=true" <br>
