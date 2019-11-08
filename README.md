@@ -111,11 +111,17 @@ export TESTNET_EXPLORER_URL=
     > export RUN_DIR=~~`/opt/cet`~~<br>
     > sudo mkdir -p ${RUN_DIR}<br>
     > sudo chown $USER ${RUN_DIR}<br>
-    > \#Node Name, e.g.: MyAwesomeNode. (please keep the `'` marks) <br>
-    > export VALIDATOR_MONIKER='~~`<your_moniker_name>`~~'<br>
     > \#Node's public IP <br>
     > export VALIDATOR_PUBLIC_IP=~~`<validator_public_ip>`~~<br>
+    > \#Node Name, e.g.: ViaWallet. (please keep the `'` marks) <br>
+    > export VALIDATOR_MONIKER='~~`<your_moniker_name>`~~'<br>
+    
+    <details>
+    <summary>validator moniker name example</summary>
 
+    ![example_moniker](./images/validator_moniker.png)
+
+    </details>
 
 - 1.5 Download software on your server
     > \# Download node daemon software `cetd`, node client `cetcli`, and initial chain config `genesis.json`<br>
