@@ -87,18 +87,20 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 -  1.2 设置节点的配置文件(config.toml)
 
-> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=seeds  <br>
-> value='\\"${CHAIN_SEEDS}\\"' backup=true" <br>
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=seeds value='\\"${CHAIN_SEEDS}\\"' backup=true" <br>
 > #
-> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=persistent_peers <br>
-> value='\\"${VALIDATOR_ID}\\"' backup=true" <br>
-> #   	
-> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=private_peer_ids <br>
-> value='\\"${VALIDATOR_ID}\\"' backup=true" <br>
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=persistent_peers value='\\"${VALIDATOR_ID}\\"' backup=true" <br>
 > #
-> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=addr_book_strict <br> 
-> value='false' backup=true" <br>
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=private_peer_ids value='\\"${VALIDATOR_ID}\\"' backup=true" <br>
 > #
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=addr_book_strict value='false' backup=true" <br>
+> #
+
+*	seeds: cetd网络的种子节点标识，用于帮助新节点接入整个cetd网络，与网络中的其它节点进行交流。
+*	persistent_peers: 配置`validator`节点的标识，会持久链接`validator`节点，断开时，会进行重链；如果未在此处配置这个值，可能`sentry node`在达到链接最大值时，将与`validator`节点的链接随机断开。   	
+*	private_peer_ids: 配置`validator`节点的标识，当`sentry node`与网络中的其它节点进行IP地址交换时，不会将该IP地址暴露出去.
+*	addr_book_strict: 配置为true，允许`sentry node`链接不可路由的IP地址节点，因为`validator`可以处于保护的目的，处于内网中，不提供对外的IP地址。
+
 
 - 	1.2 运行节点
 
@@ -115,18 +117,18 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 -  1.2 设置节点的配置文件(config.toml)
   
-> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=pex <br>
-> value='false' backup=true" <br>
-> # 
-> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=persistent_peers <br>
-> value='\\"${SENTRY_NODE_IDS}\\"' backup=true" <br>
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=pex value='false' backup=true" <br>
 > #
-> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=addr_book_strict <br> 
-> value='false' backup=true" <br>
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=persistent_peers value='\\"${SENTRY_NODE_IDS}\\"' backup=true" <br>
+> #
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=addr_book_strict value='false' backup=true" <br>
 > #
 
+*	pex: 设置为false,禁止validator节点与sentry node节点交换地址簿，保护validator节点的IP地址不会被泄漏出去.<br>
+*	persistent_peers: 用`逗号`分隔的`sentry node`节点的标识，validator链接这些`sentry node`节点与整个网络沟通.因为pex标识设置为false,如果验证者节点未配置这个值，会导致validator节点无法加入网络. <br>
+*	addr_book_strict: 设置为true，允许validator链接不可路由的内网IP的`sentry node`节点;因为有可能`validator`与`sentry node`位于同一个私有网络，它们之间通过私有网络进行交流. <br>
 
-- 	1.2  获取节点的共识consensus pubkey, 供后续创建验证节点使用
+- 	1.3  获取节点的共识consensus pubkey, 供后续创建验证节点使用
 
 >	echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --home=${RUN_DIR}/.cetd)" <br>
 
@@ -135,11 +137,11 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 `cettestvalconspub1zcjduepqn926zz0lqt9dt83xfn9vflnxhrem644ep4k4qkgz2fjpef3402mqeuf2yz
 `
 
--	1.3  运行节点
+-	1.4  运行节点
 
 [参照下面的节点运行方案](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#%E8%BF%90%E8%A1%8C%E8%8A%82%E7%82%B9)
 
--	1.4 将该节点设置为 Validator 节点
+-	1.5 将该节点设置为 Validator 节点
 
 [参照下面的将节点设置为Validator的方案](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#%E5%B0%86%E8%8A%82%E7%82%B9%E8%AE%BE%E7%BD%AE%E4%B8%BAvalidator)
 
@@ -154,10 +156,10 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 <details>
 <summary> 以`systemd`管理`cetd`举例:</summary>
+	
 **1.1 以下是样例,具体systemd配置细节及日志管理, 请自行设计方案**
 
->	ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart	<br>
->	value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd' backup=true"	<br>
+>	ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd' backup=true"	<br>
 >	sudo mv ${RUN_DIR}/cetd.service.example /etc/systemd/system/cetd.service	<br>
 >	sudo ln -s /etc/systemd/system/cetd.service /etc/systemd/system/multi-user.target.wants/cetd.service	<br>
 >	sudo systemctl daemon-reload	<br>
@@ -234,7 +236,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 -	1.1 设置环境变量
 
 >	export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli <br>
->	export VALIDATOR_PUBLIC_IP=~~<validator_public_ip>~~ <br>
+>	export SENTRY_NODE_PUBLIC_IP=~~<validator_public_ip>~~ <br>
 > 	export VALIDATOR_MONIKER=~~<moniker_name>~~ <br>
 >  export CHAIN_ID=coinexdex-test1	<br>
 `export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006`
@@ -244,11 +246,11 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 >	export RUN_DIR=~~/opt/node~~		<br>
 >	sudo mkdir -p ${RUN_DIR}	<br>
 >	sudo chown $USER ${RUN_DIR}	<br>
->
+>	cd ${RUN_DIR}	<br>
 
 *	检查环境变量
 
->	[ "${VALIDATOR_PUBLIC_IP}" != "" ] && echo "OK" || echo "ERROR" <br>
+>	[ "${SENTRY_NODE_PUBLIC_IP}" != "" ] && echo "OK" || echo "ERROR" <br>
 >	[ "${CETCLI_URL}" != "" ] && echo "OK" || echo "ERROR" <br>
 >	[ "${VALIDATOR_MONIKER}" != "" ] && echo "OK" || echo "ERROR" <br>
 >	[ "${CHAIN_ID}" != "" ] && echo "OK" || echo "ERROR" <br>
@@ -258,7 +260,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 >	curl ${CETCLI_URL} > cetcli <br>
 >	chmod a+x ./cetcli <br>
->	${RUN_DIR}/cetcli config node ${VALIDATOR_PUBLIC_IP}:26657 <br>
+>	${RUN_DIR}/cetcli config node ${SENTRY_NODE_PUBLIC_IP}:26657 <br>
 >	#查看是否可以链接到远端节点 <br>
 >  ${RUN_DIR}/cetcli status <br>	
 > 
