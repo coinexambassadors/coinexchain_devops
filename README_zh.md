@@ -290,7 +290,7 @@ export TESTNET_EXPLORER_URL=
     > ./cetcli status | grep ${VALIDATOR_PUBLIC_IP}  && echo "OK" || echo "ERROR"<br>
 
 - 1.15 [个人电脑]创建帐户<br>
-- 1.15 通过cetcli生成新账户
+- 1.15 通过cetcli生成新账户<br>
     **`注意 1: >>>帐户的助记词会在这个命令中输出, 请一定记得保管!!!!!!<<<`**<br>
     **`注意 2: >>>你的keystore文件会存储在: ~/.cetcli 中, 也请一定备份这个目录<<<`**<br>
     **`注意 3: >>>也需要记住相应帐户的keystore加密密码, 后续才能使用相应的帐户<<<`**<br>
@@ -326,8 +326,8 @@ export TESTNET_EXPLORER_URL=
     ---
     <br><br>
     </details>  
-- 1.152 通过cetcli导入助记词
-	如果已经在ViaWallet等应用中创建过地址并保存了助记词，可以通过cetcli导入助记词
+- 1.152 通过cetcli导入助记词<br>
+	如果已经在ViaWallet等应用中创建过地址并保存了助记词，可以通过cetcli导入助记词<br>
     **`注意 1: >>>你的keystore文件将会存储在: ~/.cetcli 中, 请一定备份这个目录<<<`**<br>
     **`注意 2: >>>需要记住相应帐户的keystore加密密码, 后续才能使用相应的帐户<<<`**<br>
     > \#example export KEY_NAME=my_key<br>

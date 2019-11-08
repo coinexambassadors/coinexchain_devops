@@ -314,10 +314,10 @@ export TESTNET_EXPLORER_URL=
     > ./cetcli status | grep ${VALIDATOR_PUBLIC_IP}  && echo "OK" || echo "ERROR"<br>
 
 - 1.15 Create account for validator operator<br>
-- 1.151 Create new account by cetcli
+- 1.151 Create new account by cetcli<br>
     **`NOTES: >>>your mnemonic passphrase will print out by this command, store it safely<<<`**<br>
-    **`NOTES: >>>your private keystore will be in folder: ~/.cetcli, PLEASE DO BACKUP<<<`**
-    **`NOTES: >>>in order to continue using the corresponding account, please remember passphrase<<<`**
+    **`NOTES: >>>your private keystore will be in folder: ~/.cetcli, PLEASE DO BACKUP<<<`**<br>
+    **`NOTES: >>>in order to continue using the corresponding account, please remember passphrase<<<`**<br>
     > \#example export KEY_NAME=my_key<br>
     > export KEY_NAME=~~`<replace_with_your_local_key_name>`~~ <br>
     > ./cetcli keys add ${KEY_NAME}<br>
@@ -349,10 +349,10 @@ export TESTNET_EXPLORER_URL=
     ---
     <br><br>
     </details>  
-- 1.152 Import mnemonic passphrase by cetcli
-	If you have already created an address in an application such as ViaWallet and saved the mnemonic, you can import the mnemonic by cetcli.
-    **`NOTES: >>>your private keystore will be in folder: ~/.cetcli, PLEASE DO BACKUP<<<`**	
-	**`NOTES: >>>in order to continue using the corresponding account, please remember passphrase<<<`**
+- 1.152 Import mnemonic passphrase by cetcli<br>
+	If you have already created an address in an application such as ViaWallet and saved the mnemonic, you can import the mnemonic by cetcli.<br>
+    **`NOTES: >>>your private keystore will be in folder: ~/.cetcli, PLEASE DO BACKUP<<<`**<br>
+	**`NOTES: >>>in order to continue using the corresponding account, please remember passphrase<<<`**<br>
     > \#example export KEY_NAME=my_key<br>
     > export KEY_NAME=~~`<replace_with_your_local_key_name>`~~ <br>
     > ./cetcli keys add ${KEY_NAME} --recover<br>
