@@ -111,7 +111,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 -	1.1 设置 sentry node 的seed id
 
 >	export RUN_DIR=~~`/opt/cet`~~ <br>
-> 	export SENTRY_NODE_IDS=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656; 1231e234a695345c3139953c4e75fc0636121a3b@30.124.14.231:26656
+> 	export SENTRY_NODE_IDS=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656, 1231e234a695345c3139953c4e75fc0636121a3b@30.124.14.231:26656
 
 -  1.2 设置节点的配置文件(config.toml)
   
@@ -120,9 +120,6 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 > # 
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=persistent_peers <br>
 > value='\\"${SENTRY_NODE_IDS}\\"' backup=true" <br>
-> #   	
-> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=private_peer_ids <br>
-> value='omitted' backup=true" <br>
 > #
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=addr_book_strict <br> 
 > value='false' backup=true" <br>
@@ -131,8 +128,7 @@ export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 - 	1.2  获取节点的共识consensus pubkey, 供后续创建验证节点使用
 
->	echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --<br>
->	home=${RUN_DIR}/.cetd)" <br>
+>	echo "export VALIDATOR_CONSENSUS_PUBKEY=$(${RUN_DIR}/cetd tendermint show-validator --home=${RUN_DIR}/.cetd)" <br>
 
 样例输出: (测试网前缀`cettestvalconspub`, 主网前缀`coinexvalconspub`)
 
