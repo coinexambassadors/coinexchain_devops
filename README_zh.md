@@ -90,7 +90,7 @@ export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
 export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
 export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
 export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
-export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
+export SHA256SUM_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 export FAUCET_URL=
 export REST_API=
@@ -125,10 +125,10 @@ export TESTNET_EXPLORER_URL=
     <details>
     <summary>软件包校验:</summary>
 
-    发布时官方会在软件包同级目录提供相应软件的md5, 请自行进行下载软件的校验, 以保证下载了正确的版本.<br>
-    > curl ${MD5_CHECKSUM_URL} > ${RUN_DIR}/md5.sum<br>
-    > md5sum ${RUN_DIR}/cetd ${RUN_DIR}/cetcli ${RUN_DIR}/genesis.json ${RUN_DIR}/cetd.service.example<br>
-     \#然后比较md5.sum文件内容与实际输出, 确认一致
+    发布时官方会在软件包同级目录提供相应软件的sha256, 请自行进行下载软件的校验, 以保证下载了正确的版本.<br>
+    > curl ${SHA256SUM_CHECKSUM_URL} > ${RUN_DIR}/sha256.sum<br>
+    > sha256sum ${RUN_DIR}/cetd ${RUN_DIR}/cetcli ${RUN_DIR}/genesis.json ${RUN_DIR}/cetd.service.example<br>
+     \#然后比较sha256.sum文件内容与实际输出, 确认一致
     ---
     </details>
 
