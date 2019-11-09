@@ -16,6 +16,11 @@
 *	`validator`设置禁止交换地址选项，防止它链接到网络中的其它节点，暴漏自己的公网IP。
 *	`sentry node`使用AWS非固定的公网IP，可以起到部分公网IP自动更换的作用，防止被针对性的攻击。
 
+**注意**:
+
+下述示例所使用的所有**环境变量的值**都为 `coinexdex-test2006 测试网`的数据；**在主网部署时，需要将值切换为主网的数据**.
+
+
 
 ## 生成节点，获取节点的`Seed ID`
 
@@ -94,8 +99,8 @@
 
 
 >	export RUN_DIR=~~`/opt/cet`~~ <br>
->	export VALIDATOR_ID=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656 <br>
->	export CHAIN_SEEDS=61e905c822f3ed1ae70982cf9ea61453e15104c5@47.75.208.217:26656,8318598ad2a9d47bd9f9a287b329ae23a9201cb3@47.52.106.214:26656 <br>
+>	export VALIDATOR_ID=~~234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656~~ <br>
+>	export CHAIN_SEEDS=~~61e905c822f3ed1ae70982cf9ea61453e15104c5@47.75.208.217:26656,8318598ad2a9d47bd9f9a287b329ae23a9201cb3@47.52.106.214:26656~~ <br>
 
 **注意：VALIDATOR_ID中 节点的IP应该设置为私有IP(即内网IP)**
 
@@ -128,7 +133,7 @@
 -	1.1 设置 sentry node 的seed id
 
 >	export RUN_DIR=~~`/opt/cet`~~ <br>
-> 	export SENTRY_NODE_IDS=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656,1231e234a695345c3139953c4e75fc0636121a3b@30.124.14.231:26656
+> 	export SENTRY_NODE_IDS=~~234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656,1231e234a695345c3139953c4e75fc0636121a3b@30.124.14.231:26656~~
 
 **注意：SENTRY_NODE_IDS 中节点的IP应该设置为私有IP(即内网IP)**
 
@@ -234,7 +239,7 @@
 
 导入获取的节点共识`consensus pubkey`：[即 1.3节的输出](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md#validator-node-%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E8%AE%BE%E7%BD%AE) 
 
->	export VALIDATOR_CONSENSUS_PUBKEY=cettestvalconspub1zcjduepqn926zz0lqt9dt83xfn9vflnxhrem644ep4k4qkgz2fjpef3402mqeuf2yz <br>
+>	export VALIDATOR_CONSENSUS_PUBKEY=~~cettestvalconspub1zcjduepqn926zz0lqt9dt83xfn9vflnxhrem644ep4k4qkgz2fjpef3402mqeuf2yz~~ <br>
 
 ------------
 
