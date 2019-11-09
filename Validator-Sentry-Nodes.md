@@ -6,6 +6,16 @@
 
 本方案使用两个`Sentry Node`节点，一个`Validator Node`节点，总计三台服务器。
 
+本示例服务器为：Ubuntu 18.04，AWS.
+
+两个`sentry node` 节点与 `validator`节点部署在同一个region，它们之间通过 私有IP(即内网IP)进行通信；
+
+改方案的优点在于：
+
+*	`sentry node`节点与`validator`节点之间通过私有IP 进行通信。
+*	`validator`设置禁止交换地址选项，防止它链接到网络中的其它节点，暴漏自己的公网IP。
+*	`sentry node`使用AWS非固定的公网IP，可以起到部分公网IP自动更换的作用，防止被针对性的攻击。
+
 
 ## 生成节点，获取节点的`Seed ID`
 
@@ -20,10 +30,10 @@
 
 -   1.3 在shell中设置链的参数
 
-    **示例**：`coinexdex-test1`测试链的参数
+    **示例**：`coinexdex-test2006`测试链的参数
     
     ```
-    export CHAIN_ID=coinexdex-test1
+    export CHAIN_ID=coinexdex-test2006
     export CHAIN_SEEDS=4d61ee17a695695c3139953c4e75fc0636121a3b@3.134.44.201:26656
     export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006
     export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
@@ -87,6 +97,8 @@
 >	export VALIDATOR_ID=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656 <br>
 >	export CHAIN_SEEDS=4d61ee17a695695c3139953c4e75fc0636121a3b@3.134.44.201:26656 <br>
 
+**注意：VALIDATOR_ID中 节点的IP应该设置为私有IP(即内网IP)**
+
 -  1.2 设置节点的配置文件(config.toml)
 
 > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=seeds value='\\"${CHAIN_SEEDS}\\"' backup=true" <br>
@@ -117,6 +129,8 @@
 
 >	export RUN_DIR=~~`/opt/cet`~~ <br>
 > 	export SENTRY_NODE_IDS=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656,1231e234a695345c3139953c4e75fc0636121a3b@30.124.14.231:26656
+
+**注意：SENTRY_NODE_IDS 中节点的IP应该设置为私有IP(即内网IP)**
 
 -  1.2 设置节点的配置文件(config.toml)
   
@@ -239,7 +253,7 @@
 >	export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli <br>
 >	export SENTRY_NODE_PUBLIC_IP=~~<validator_public_ip>~~ <br>
 > 	export VALIDATOR_MONIKER=~~<moniker_name>~~ <br>
->  export CHAIN_ID=coinexdex-test1	<br>
+>  export CHAIN_ID=coinexdex-test2006	<br>
 `export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006`
 
 `RUN_DIR` 为用户的自定义工作目录，以下示例以`/opt/node`为例
