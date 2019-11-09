@@ -34,7 +34,7 @@
     
     ```
     export CHAIN_ID=coinexdex-test2006
-    export CHAIN_SEEDS=4d61ee17a695695c3139953c4e75fc0636121a3b@3.134.44.201:26656
+    export CHAIN_SEEDS=61e905c822f3ed1ae70982cf9ea61453e15104c5@47.75.208.217:26656,8318598ad2a9d47bd9f9a287b329ae23a9201cb3@47.52.106.214:26656
     export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006
     export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
     export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
@@ -95,7 +95,7 @@
 
 >	export RUN_DIR=~~`/opt/cet`~~ <br>
 >	export VALIDATOR_ID=234d17ad72695c3139953c4e75fc0636121a3b@3.134.44.201:26656 <br>
->	export CHAIN_SEEDS=4d61ee17a695695c3139953c4e75fc0636121a3b@3.134.44.201:26656 <br>
+>	export CHAIN_SEEDS=61e905c822f3ed1ae70982cf9ea61453e15104c5@47.75.208.217:26656,8318598ad2a9d47bd9f9a287b329ae23a9201cb3@47.52.106.214:26656 <br>
 
 **注意：VALIDATOR_ID中 节点的IP应该设置为私有IP(即内网IP)**
 
