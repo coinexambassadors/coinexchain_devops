@@ -98,7 +98,7 @@ export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
 export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
 export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
 export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
-export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
+export SHA256SUM_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 
 export FAUCET_URL=
 export REST_API=
@@ -135,9 +135,9 @@ export TESTNET_EXPLORER_URL=
     <summary>How to verify software packages?</summary>
 
     If release in binary package, md5 digest will also be provided.<br>
-    > curl ${MD5_CHECKSUM_URL} > ${RUN_DIR}/md5.sum<br>
-    > md5sum ${RUN_DIR}/cetd ${RUN_DIR}/cetcli ${RUN_DIR}/genesis.json ${RUN_DIR}/cetd.service.example<br>
-     \# then compare outputs and contents in md5.sum file
+    > curl ${SHA256SUM_CHECKSUM_URL} > ${RUN_DIR}/sha256.sum<br>
+    > sha256sum ${RUN_DIR}/cetd ${RUN_DIR}/cetcli ${RUN_DIR}/genesis.json ${RUN_DIR}/cetd.service.example<br>
+     \# then compare outputs and contents in sha256.sum file
     ---
     </details>
 
