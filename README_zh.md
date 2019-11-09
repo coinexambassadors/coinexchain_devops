@@ -70,6 +70,8 @@
 - 1.1.1 工具准备
     > sudo apt update<br>
     > sudo apt install -y ansible
+    
+    - 通过`$ ansible --version`检查ansible版本 大于 2.5.1
 
 - 1.2 服务器网络配置
     - 端口列表(以下全部为TCP连接):
