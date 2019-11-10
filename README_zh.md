@@ -170,7 +170,7 @@ export TESTNET_EXPLORER_URL=
     
 - 1.10 启动全节点
     <br>可通过以下命令来启动节点, 但推荐使用Systemd/Supervisor等来启动.
-    > ${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd
+    > \${RUN_DIR}/cetd start --home=\${RUN_DIR}/.cetd --minimum-gas-prices=20.0cet
 
     <details>
     <summary>1.10-操作样例, 以`systemd`管理`cetd`举例:</summary>

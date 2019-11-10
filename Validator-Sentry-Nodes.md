@@ -171,7 +171,7 @@
 
 可通过以下命令来启动节点, 但推荐使用Systemd/Supervisor等来启动.
 
-> ${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd <br>
+> \${RUN_DIR}/cetd start --home=\${RUN_DIR}/.cetd --minimum-gas-prices=20.0cet<br>
 > 
 
 <details>
