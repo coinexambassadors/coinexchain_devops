@@ -287,9 +287,9 @@
 
 -	1.3 创建帐户
 
-**注意 1: >>>帐户的助记词会在这个命令中输出, 请一定记得保管!!!!!!<<<**
-**注意 2: >>>你的keystore文件会存储在: ~/.cetcli 中, 也请一定备份这个目录<<<**
-**注意 3: >>>也需要记住相应帐户的keystore加密密码, 后续才能使用相应的帐户<<<**
+**注意 1: >>>帐户的助记词会在这个命令中输出, 请一定记得保管!!!!!!<<<**<br>
+**注意 2: >>>你的keystore文件会存储在: ~/.cetcli 中, 也请一定备份这个目录<<<**<br>
+**注意 3: >>>也需要记住相应帐户的keystore加密密码, 后续才能使用相应的帐户<<<**<br>
 
 >	#example export KEY_NAME=my_key <br>
 >	export KEY_NAME=<replace_with_your_local_key_name> <br>
@@ -347,11 +347,11 @@ j@j ~ $
 	    amount: "1499900000000"
 	```
 	
-	`注意: 链上所有token精度为8位, 以上1499900000000cet 相当于 14999CET`
-	`另外少了一个CET, 是因为帐户初次激活费会扣除1CET做为激活功能费`
-	`NOTES: All tokens' precision are fixed at 8 decimal digits,`
-	`so in previous example 1499900000000cet on chain means 14999CET`
-	`One CET will be charged as account activation feature fee`
+	`注意: 链上所有token精度为8位, 以上1499900000000cet 相当于 14999CET`<br>
+	`另外少了一个CET, 是因为帐户初次激活费会扣除1CET做为激活功能费`<br>
+	`NOTES: All tokens' precision are fixed at 8 decimal digits,`<br>
+	`so in previous example 1499900000000cet on chain means 14999CET`<br>
+	`One CET will be charged as account activation feature fee`<br>
 
 -	1.6 发送成为验证者节点的交易
 
