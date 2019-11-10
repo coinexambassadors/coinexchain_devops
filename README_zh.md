@@ -527,14 +527,14 @@ export TESTNET_EXPLORER_URL=
 
     ...
     ```
-- 请对节点进行验证<br>
+- 建议对节点完成以下两项验证<br>
     `注意: 需要在运行cetd的服务器上执行以下命令, 并要求cetd已经同步完成.`<br>
     `  {RUN_DIR}/cetcli status 命令输出包含 "catching_up":false 时表示cetd已经同步完成`
-    - 我的节点是否已经处于验证人状态?<br>
+    - 检查项 1：我的节点是否已经处于验证人状态?<br>
     > ./cetcli q tendermint-validator-set --chain-id=${CHAIN_ID} | grep $(./cetd tendermint show-validator --home=${RUN_DIR}/.cetd ) && echo "in validator set" || echo "not in validator set"
 
     输出"in validator set"时, 表示相关你的验证人节点已经建立完成.
-    - 我的节点是否已经参与共识?<br>
+    - 检查项 2：我的节点是否已经参与共识?<br>
     > ./cetcli q block --chain-id=${CHAIN_ID}  | grep $(grep address ${RUN_DIR}/.cetd/config/priv_validator_key.json | grep -o "\: .*" | grep -o '[0-9a-zA-Z]\{40\}') && echo "participates in the consensus" || echo "not participates in the consensus"
     
     输出"participates in the consensus"时, 表示相关你的验证人节点已经在参与全网共识的出块投票.
