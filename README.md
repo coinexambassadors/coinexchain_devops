@@ -464,8 +464,8 @@ export EXPLORER_URL=explorer.coinex.org
     --commission-max-change-rate=~~`0.01`~~ \\\
     --min-self-delegation=500000000000000 \\\
     --from $(./cetcli keys show ${KEY_NAME} -a) \\\
-    --gas 300000 \\\
-    --fees 6000000cet
+    --gas 40000 \\\
+    --fees 800000cet
 
     <details>
     <summary>need self delegate 10000CET for testnets:</summary>
