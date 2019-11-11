@@ -87,8 +87,8 @@ The diversity of node deployment solutions in the network contributes to the ove
             ---
             </details>
 
-
-- 1.3 Export Chain parameters in your shell <br> **`EXAMPLE`** parameters for [coinexdex-test2006](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2006):
+- 1.3  Export Chain parameters in your shell <br>
+- 1.3-testnet: **`EXAMPLE`** parameters for testnet chain: [coinexdex-test2006](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2006):
 ```
 export CHAIN_ID=coinexdex-test2006
 export CHAIN_SEEDS=61e905c822f3ed1ae70982cf9ea61453e15104c5@47.75.208.217:26656,8318598ad2a9d47bd9f9a287b329ae23a9201cb3@47.52.106.214:26656
@@ -103,6 +103,19 @@ export FAUCET_URL=
 export REST_API=
 export TESTNET_RPC_URL=47.75.208.217:26657
 export TESTNET_EXPLORER_URL=
+```
+
+- 1.3-mainnet  use following [mainnet parameter](https://github.com/coinexchain/artifacts/blob/master/README.md), when deploy for mainnet:
+```
+export CHAIN_ID=coinexdex
+export CHAIN_SEEDS=9a379b9e1e41473d489de2470c02eac30fd4f77f@47.52.163.174:26656,01ac3646c649d91671173bd4aa02bc282ca804ba@47.252.23.106:26656
+export ARTIFACTS_BASE_URL=https://coinexdex-artifacts.s3.amazonaws.com/coinexdex
+export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
+export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
+export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
+export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
+export SHA256SUM_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/sha256.sum
+export EXPLORER_URL=explorer.coinex.org
 ```
 
 - 1.4 Export your env parameters,  use `/opt/cet` as node setup example directory:
