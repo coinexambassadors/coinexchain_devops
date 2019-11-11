@@ -179,7 +179,7 @@
 	
 **1.1 以下是样例,具体systemd配置细节及日志管理, 请自行设计方案**
 
->	ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd' backup=true"	<br>
+>	ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd --minimum-gas-prices=20.0cet' backup=true"	<br>
 >	sudo mv ${RUN_DIR}/cetd.service.example /etc/systemd/system/cetd.service	<br>
 >	sudo ln -s /etc/systemd/system/cetd.service /etc/systemd/system/multi-user.target.wants/cetd.service	<br>
 >	sudo systemctl daemon-reload	<br>
