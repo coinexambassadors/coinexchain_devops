@@ -72,6 +72,8 @@ The diversity of node deployment solutions in the network contributes to the ove
     > sudo apt update<br>
     > sudo apt install -y ansible
 
+   - check ansible version >= 2.5.1 by `ansible --version`
+   
 - 1.2 Config network ports
     - ports(in TCP):
         - `26656`: Need open, for P2P communication
