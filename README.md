@@ -183,7 +183,8 @@ export TESTNET_EXPLORER_URL=
 - 1.10 Start your node
     <br>Could start with following command, But recommend to start your node with software like Systemd or Supervisor
     
-> \${RUN_DIR}/cetd start --home=\${RUN_DIR}/.cetd --minimum-gas-prices=20.0cet
+    > \${RUN_DIR}/cetd start --home=\${RUN_DIR}/.cetd --minimum-gas-prices=20.0cet
+    
     
     <details>
     <summary>1.10 operation example: (use `systemd` to manage `cetd`)</summary>
