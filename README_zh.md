@@ -80,7 +80,8 @@
         - `26659`: 如果使用下文中`方案3`时, 供与tmkms连接使用.
         - `1317`:  按需开放或只对可信网段开放, 供cetcli运行的rest-server使用, 提供基于REST接口的交互及swagger文档
 
-- 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用. 以下参数以[coinexdex-test2006](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2006)为示例:
+- 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用.
+- 1.3-testnet:  测试网部署使用以下参数: <br> 以[coinexdex-test2006](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2006)为示例:
 
 ```
 export CHAIN_ID=coinexdex-test2006
@@ -96,6 +97,20 @@ export FAUCET_URL=
 export REST_API=
 export TESTNET_RPC_URL=47.75.208.217:26657
 export TESTNET_EXPLORER_URL=
+```
+
+- 1.3-mainnet: 主网部署时, 使用以下参数:
+
+```
+export CHAIN_ID=coinexdex
+export CHAIN_SEEDS=9a379b9e1e41473d489de2470c02eac30fd4f77f@47.52.163.174:26656,01ac3646c649d91671173bd4aa02bc282ca804ba@47.252.23.106:26656
+export ARTIFACTS_BASE_URL=https://coinexdex-artifacts.s3.amazonaws.com/coinexdex
+export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
+export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
+export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
+export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
+export SHA256SUM_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/sha256.sum
+export EXPLORER_URL=explorer.coinex.org
 ```
 
 - 1.4 确定安装参数, 以执行目录/opt/cet为例:
