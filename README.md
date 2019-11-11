@@ -189,7 +189,7 @@ export TESTNET_EXPLORER_URL=
     <summary>1.10 operation example: (use `systemd` to manage `cetd`)</summary>
 
     **<br>`Example only, please further customize the systemd config details and log management`** 
-    > ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd' backup=true"<br>
+    > ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd --minimum-gas-prices=20.0cet' backup=true"<br>
     > sudo mv ${RUN_DIR}/cetd.service.example /etc/systemd/system/cetd.service<br>
     > sudo ln -s /etc/systemd/system/cetd.service /etc/systemd/system/multi-user.target.wants/cetd.service<br>
     > sudo systemctl daemon-reload<br>
