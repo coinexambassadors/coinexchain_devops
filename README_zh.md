@@ -156,16 +156,20 @@ export TESTNET_EXPLORER_URL=
 
 
 - 1.7 应用网络初始配置genesis.json
-    > cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json
-
+    
+> cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json
+    
 - 1.8 设置节点对外IP地址.
-    > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=external_address value='\\"tcp://${VALIDATOR_PUBLIC_IP}:26656\\"' backup=true"
-
+    
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=external_address value='\\"tcp://${VALIDATOR_PUBLIC_IP}:26656\\"' backup=true"
+    
 - 1.8.1 设置节点对外RPC地址<br>
     节点RPC端口默认监听127.0.0.1. 如果需要远程通过`cetcli`与节点交互, 需要修改服务监听地址为`0.0.0.0`
-    > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=rpc option=laddr value='\\"tcp://0.0.0.0:26657\\"' backup=true"
-
+    
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=rpc option=laddr value='\\"tcp://0.0.0.0:26657\\"' backup=true"
+    
 - 1.9 配置网络中的seeds节点信息. 取值使用$CHAIN_SEEDS的值
+    
     > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=seeds value='\\"${CHAIN_SEEDS}\\"' backup=true"
     
 - 1.10 启动全节点
@@ -259,7 +263,6 @@ export TESTNET_EXPLORER_URL=
 <br>
 <br>
 
-
 ---
 - 到目前为止, 就可以通过广播一个CreateValidator交易到网络, 来将节点设置为验证人.<br>
     - 需要以下条件:<br>
@@ -317,11 +320,12 @@ export TESTNET_EXPLORER_URL=
     mnemonic: ""
     threshold: 0
     pubkeys: []
+    ```
 
 
     **Important** write this mnemonic phrase in a safe place.
     It is the only way to recover your account if you ever forget your password.
-
+    
     pelican someone great yard electric quick embark hazard surprise yard picture draft student tilt volume solve charge price grit jealous problem door rent evolve
     j@j ~ $
     ```
@@ -356,7 +360,7 @@ export TESTNET_EXPLORER_URL=
   	pubkeys: []
     j@j ~ $
     ```
-    ---
+  ---
     <br><br>
     </details>
 - 1.16 [个人电脑] 查到帐户地址后, 可从CoinEx交易所提现操作到链上地址.
@@ -391,8 +395,9 @@ export TESTNET_EXPLORER_URL=
 - 1.18.1 发送成为验证者节点的交易
     - 个人电脑上执行`1.12`中的输出, 以便个人电脑shell能找到`${VALIDATOR_CONSENSUS_PUBKEY}`
     - 检查一下节点共识公钥是否已在shell中可用:
-        > [ "${VALIDATOR_CONSENSUS_PUBKEY}" != "" ] && echo "OK" || echo "ERROR"<br>
-
+        
+    > [ "${VALIDATOR_CONSENSUS_PUBKEY}" != "" ] && echo "OK" || echo "ERROR"<br>
+    
 - 1.18.2 准备节点的identity, 以便自定义的验证人节点图标<br>
     - 从 https://keybase.io 网站注册后, 上传自定义图标, 并获得相应的identity
     - 比如[ViaWallet](https://keybase.io/viawallet)在测试网中使用的identity是`9A30CBDA5872CED8`
@@ -414,9 +419,9 @@ export TESTNET_EXPLORER_URL=
     --moniker=${VALIDATOR_MONIKER} \\\
     --identity=${VALIDATOR_IDENTITY} \\\
     --chain-id=${CHAIN_ID} \\\
-    --commission-rate=0.1 \\\
-    --commission-max-rate=0.2 \\\
-    --commission-max-change-rate=0.01 \\\
+    --commission-rate=~~`0.1`~~ \\\
+    --commission-max-rate=~~`0.2`~~ \\\
+    --commission-max-change-rate=~~`0.01`~~ \\\
     --min-self-delegation=500000000000000 \\\
     --from $(./cetcli keys show ${KEY_NAME} -a) \\\
     --gas 300000 \\\
@@ -432,9 +437,9 @@ export TESTNET_EXPLORER_URL=
     --moniker=${VALIDATOR_MONIKER} \\\
     --identity=${VALIDATOR_IDENTITY} \\\
     --chain-id=${CHAIN_ID} \\\
-    --commission-rate=0.1 \\\
-    --commission-max-rate=0.2 \\\
-    --commission-max-change-rate=0.01 \\\
+    --commission-rate=~~`0.1`~~ \\\
+    --commission-max-rate=~~`0.2`~~ \\\
+    --commission-max-change-rate=~~`0.01`~~ \\\
     --min-self-delegation=1000000000000 \\\
     --from $(./cetcli keys show ${KEY_NAME} -a) \\\
     --gas 300000 \\\
@@ -498,8 +503,9 @@ export TESTNET_EXPLORER_URL=
 <summary>查询验证人节点状态:</summary>
 
 - Check your validator status in [CoinEx DEX Chain Explorer](https://explorer.coinex.org/validators)
-    - 测试网浏览器请查找[链接](https://github.com/coinexchain/testnets)
-
+    
+- 测试网浏览器请查找[链接](https://github.com/coinexchain/testnets)
+    
 - Get your validator operator address
     > ./cetcli keys show ${KEY_NAME} --bech val
     ```
@@ -544,7 +550,7 @@ export TESTNET_EXPLORER_URL=
 	cetcli tx slashing unjail --from ${KEY_NAME} --chain-id=${CHAIN_ID} --gas=100000 --fees=2000000cet
 	```
 
-    ---
+  ---
     <br>
     </details> 
 
@@ -566,7 +572,6 @@ export TESTNET_EXPLORER_URL=
 <br>
 <br>
 
-
 ---
 
 
@@ -585,7 +590,7 @@ export TESTNET_EXPLORER_URL=
     - 节点运营者可以进一步尝试部署哨兵节点自动扩容, 自动换外部IP等防DDoS的方案.
 
 - 部署文档
-    
+  
     [参考文档](https://github.com/coinexchain/devops/blob/master/Validator-Sentry-Nodes.md)
 
 <br>
@@ -615,7 +620,7 @@ export TESTNET_EXPLORER_URL=
     - Tendermint KMS需要部署在私有数据中心, 配合YubiHSM2进行使用
     - ValidatorNode可以部署在云端
     - ValidatorNode对块的共识签名会通过Tendermint KMS完成.
-   
+
 <br>
 <br>
 <br>

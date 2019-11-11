@@ -17,8 +17,7 @@ The diversity of node deployment solutions in the network contributes to the ove
 
 
 
-    
-    
+
 
 ### Notes
 - `SEEDS`: The SEEDS node will share the address book for newly joined nodes in the network so that it can discover other nodes in the network.
@@ -142,14 +141,15 @@ export TESTNET_EXPLORER_URL=
     </details>
 
 - 1.6 Init node's data directory
+    
     > ${RUN_DIR}/cetd init ${VALIDATOR_MONIKER} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd
 
 
     **`NOTES 1: >>> after init with --home parameter, all cetd commands(include cetd start) needs run with same --home parameter<<< `**<br>
     e.g.: if in `1.4` you specify `RUN_DIR=/opt/cet`, then should run `cetd start --home=/opt/cetd/.cetd` to start node<br><br>
-
+    
     **`NOTES 2: >>>YOUR NODE's CONSENSUS PRIVATE KEY are generated in ${RUN_DIR}/.cetd, PLEASE DO BACKUP.<<<`**<br>
-
+    
     Do backup following files, include the consensus private key:
     ```shell
     ${RUN_DIR}/.cetd
@@ -167,17 +167,21 @@ export TESTNET_EXPLORER_URL=
     </details>
 
 - 1.7 Use chain initial state config
-    > cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json
-
+    
+> cp ${RUN_DIR}/genesis.json ${RUN_DIR}/.cetd/config/genesis.json
+    
 - 1.8 Config external address so P2P peer can find your node
-    > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=external_address value='\\"tcp://${VALIDATOR_PUBLIC_IP}:26656\\"' backup=true"
-
+    
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=external_address value='\\"tcp://${VALIDATOR_PUBLIC_IP}:26656\\"' backup=true"
+    
 - 1.8.1 Config RPC server listen address<br>
     By default the node's RPC will listen on 127.0.0.1.<br>
     Need config to `0.0.0.0`, so your node can be reached by remote client `cetcli`
-    > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=rpc option=laddr value='\\"tcp://0.0.0.0:26657\\"' backup=true"
-
+    
+> ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=rpc option=laddr value='\\"tcp://0.0.0.0:26657\\"' backup=true"
+    
 - 1.9 Config P2P seeds information. (will use exported shell variable `$CHAIN_SEEDS`)
+    
     > ansible localhost -m ini_file -a "path=${RUN_DIR}/.cetd/config/config.toml section=p2p option=seeds value='\\"${CHAIN_SEEDS}\\"' backup=true"
     
 - 1.10 Start your node
@@ -273,7 +277,6 @@ export TESTNET_EXPLORER_URL=
 <br>
 <br>
 
-
 ---
 
 - So far, you can broadcast a CreateValidator tx to setup your node as Validator.<br>
@@ -340,11 +343,12 @@ export TESTNET_EXPLORER_URL=
     mnemonic: ""
     threshold: 0
     pubkeys: []
+    ```
 
 
     **Important** write this mnemonic phrase in a safe place.
     It is the only way to recover your account if you ever forget your password.
-
+    
     pelican someone great yard electric quick embark hazard surprise yard picture draft student tilt volume solve charge price grit jealous problem door rent evolve
     j@j ~ $
     ```
@@ -379,7 +383,7 @@ export TESTNET_EXPLORER_URL=
     pubkeys: []
     j@j ~ $
     ```
-    ---
+  ---
     <br><br>
     </details>
 
@@ -414,8 +418,9 @@ export TESTNET_EXPLORER_URL=
 - 1.18.1 Prepare to send the CreateValidator transaction
     - execute the output of `1.12`, so your shell will export the `${VALIDATOR_CONSENSUS_PUBKEY}`
     - check:
-        > [ "${VALIDATOR_CONSENSUS_PUBKEY}" != "" ] && echo "OK" || echo "ERROR"<br>
-
+        
+    > [ "${VALIDATOR_CONSENSUS_PUBKEY}" != "" ] && echo "OK" || echo "ERROR"<br>
+    
 - 1.18.2 prepare validator identity, so we can see your customized validator icon in chain explorer<br>
     - please create a new account in https://keybase.io
     - upload your icon
@@ -439,9 +444,9 @@ export TESTNET_EXPLORER_URL=
     --moniker=${VALIDATOR_MONIKER} \\\
     --identity=${VALIDATOR_IDENTITY} \\\
     --chain-id=${CHAIN_ID} \\\
-    --commission-rate=0.1 \\\
-    --commission-max-rate=0.2 \\\
-    --commission-max-change-rate=0.01 \\\
+    --commission-rate=~~`0.1`~~ \\\
+    --commission-max-rate=~~`0.2`~~ \\\
+    --commission-max-change-rate=~~`0.01`~~ \\\
     --min-self-delegation=500000000000000 \\\
     --from $(./cetcli keys show ${KEY_NAME} -a) \\\
     --gas 300000 \\\
@@ -456,9 +461,9 @@ export TESTNET_EXPLORER_URL=
     --moniker=${VALIDATOR_MONIKER} \\\
     --identity=${VALIDATOR_IDENTITY} \\\
     --chain-id=${CHAIN_ID} \\\
-    --commission-rate=0.1 \\\
-    --commission-max-rate=0.2 \\\
-    --commission-max-change-rate=0.01 \\\
+    --commission-rate=~~`0.1`~~ \\\
+    --commission-max-rate=~~`0.2`~~ \\\
+    --commission-max-change-rate=~~`0.01`~~ \\\
     --min-self-delegation=1000000000000 \\\
     --from $(./cetcli keys show ${KEY_NAME} -a) \\\
     --gas 300000 \\\
@@ -522,8 +527,9 @@ export TESTNET_EXPLORER_URL=
 <summary>Query Validator status:</summary>
 
 - Check your validator status in [CoinEx DEX Chain Explorer](https://explorer.coinex.org/validators)
-    - testnet explorer [link](https://github.com/coinexchain/testnets)
-
+    
+- testnet explorer [link](https://github.com/coinexchain/testnets)
+    
 - Get your validator operator address
     > ./cetcli keys show ${KEY_NAME} --bech val
     ```
@@ -567,7 +573,7 @@ export TESTNET_EXPLORER_URL=
 	cetcli tx slashing unjail --from ${KEY_NAME} --chain-id=${CHAIN_ID} --gas=100000 --fees=2000000cet
 	```
 
-    ---
+  ---
     <br>
     </details> 
 
@@ -588,7 +594,6 @@ So far, the deployment of stand-alone validator has been completed.
 <br>
 <br>
 <br>
-
 
 ---
 

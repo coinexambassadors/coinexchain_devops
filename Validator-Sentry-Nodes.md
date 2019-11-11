@@ -66,7 +66,7 @@
 
 <details>
 <summary>如何验证下载的软件?</summary>
-	
+
 > curl ${MD5_CHECKSUM_URL} > ${RUN_DIR}/md5.sum <br>
 > md5sum ${RUN_DIR}/cetd ${RUN_DIR}/cetcli ${RUN_DIR}/genesis.json ${RUN_DIR}/cetd.service.example <br>
 > 将生成的输出与文件中的数据进行比较
@@ -75,7 +75,7 @@
 - 	1.6 初始化节点目录
 
    > ${RUN_DIR}/cetd init ${NODE_NAME} --chain-id=${CHAIN_ID} --home=${RUN_DIR}/.cetd <br>
- 
+
 
 **注意：>>> 初始化时指定--home参数后, 后续所有cetd命令(包括cetd start启动节点)都需要加上--home参数.<<<**
 
@@ -176,7 +176,7 @@
 
 <details>
 <summary> 以`systemd`管理`cetd`举例:</summary>
-	
+
 **1.1 以下是样例,具体systemd配置细节及日志管理, 请自行设计方案**
 
 >	ansible localhost -m ini_file -a "path=${RUN_DIR}/cetd.service.example section=Service option=ExecStart value='${RUN_DIR}/cetd start --home=${RUN_DIR}/.cetd --minimum-gas-prices=20.0cet' backup=true"	<br>
@@ -382,9 +382,9 @@ j@j ~ $
 >	--moniker=${VALIDATOR_MONIKER} \ <br>
 >	--identity=${VALIDATOR_IDENTITY} \ <br>
 >	--chain-id=${CHAIN_ID} \ <br>
->	--commission-rate=0.1 \ <br>
->	--commission-max-rate=0.2 \ <br>
->	--commission-max-change-rate=0.01 \ <br>
+>	--commission-rate=~~`0.1`~~ \ <br>
+>	--commission-max-rate=~~`0.2`~~ \ <br>
+>	--commission-max-change-rate=~~`0.01`~~ \ <br>
 >	--min-self-delegation=500000000000000 \ <br>
 >	--from $(./cetcli keys show ${KEY_NAME} -a) \ <br>
 >	--gas 300000 \	<br>
@@ -492,7 +492,7 @@ Commission:                 rate: 0.050000000000000000, maxRate: 0.2000000000000
 
 `${RUN_DIR}/cetcli tx slashing unjail --from ${KEY_NAME} --chain-id=${CHAIN_ID} --gas=100000 --fees=2000000cet`
 
-	
+​	
 
 
 
