@@ -408,8 +408,8 @@ export EXPLORER_URL=explorer.coinex.org
     > [ "${VALIDATOR_OPERATOR_ADDR}" != "" ] && echo "OK" || echo "ERROR"<br>
     > echo ${VALIDATOR_OPERATOR_ADDR}
 
-    For testnet, faucet can be found in [link](https://github.com/coinexchain/testnets)<br>
-    e.g.: [ faucet address](http://18.190.80.148/) for testnet `coinexdex-test2004`
+    For testnet, you can get the test token on [faucet](http://faucet.coinex.org/) <br>
+
 
 - 1.17 [Optional] Query balance:
     > ./cetcli q account $(./cetcli keys show ${KEY_NAME} -a) --chain-id=${CHAIN_ID}
