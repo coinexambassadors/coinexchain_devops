@@ -383,8 +383,8 @@ export EXPLORER_URL=explorer.coinex.org
     > [ "${VALIDATOR_OPERATOR_ADDR}" != "" ] && echo "OK" || echo "ERROR"<br>
     > echo ${VALIDATOR_OPERATOR_ADDR}
 
-    如果是测试网络, 可以从水龙头获取测试币. 水龙头地址请查找[链接](https://github.com/coinexchain/testnets)<br>
-    比如: 测试网`coinexdex-test2004`[水龙头地址](http://18.190.80.148/)
+    如果是测试网络, 可以从水龙头获取测试币<br>
+    比如: 测试网`coinexdex-test2006`[水龙头地址](http://faucet.coinex.org/)
 
 
 - 1.17 [可选] 查询地址余额:
