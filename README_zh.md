@@ -504,6 +504,7 @@ export EXPLORER_URL=explorer.coinex.org
             - 须大于等于共识的最小质押量参数, 目前为500万CET
         - --commission-rate=0.1<br>
             - 表示节点当前的佣金, 0.1表示10%佣金.
+	    - 为避免网络低佣金竞争, 最少需要设置为0.1
         - --commission-max-rate=0.2<br>
             - 表示节点将来可能设定的最大佣金, 创建验证节点人后 **`佣金最大值不可变更`**
         - --commission-max-change-rate=0.01<br>
