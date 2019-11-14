@@ -442,27 +442,7 @@ export EXPLORER_URL=explorer.coinex.org
     --gas 40000 \\\
     --fees 800000cet
 
-    <details>
-    <summary>测试网中对质押要求较少, 只需要1万CET:</summary>
-
-    > \# Send CreateValidator tx to become a validator<br>
-    > ./cetcli tx staking create-validator \\\
-    --amount=1000000000000cet \\\
-    --pubkey=${VALIDATOR_CONSENSUS_PUBKEY} \\\
-    --moniker=${VALIDATOR_MONIKER} \\\
-    --identity=${VALIDATOR_IDENTITY} \\\
-    --chain-id=${CHAIN_ID} \\\
-    --commission-rate=~~`0.1`~~ \\\
-    --commission-max-rate=~~`0.2`~~ \\\
-    --commission-max-change-rate=~~`0.01`~~ \\\
-    --min-self-delegation=1000000000000 \\\
-    --from $(./cetcli keys show ${KEY_NAME} -a) \\\
-    --gas 300000 \\\
-    --fees 6000000cet
-
-    ---
-    <br>
-    </details> 
+    
 
     <details>
     <summary>cetcli tx staking create-validator --help:</summary>
