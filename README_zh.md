@@ -81,22 +81,17 @@
         - `1317`:  按需开放或只对可信网段开放, 供cetcli运行的rest-server使用, 提供基于REST接口的交互及swagger文档
 
 - 1.3 在shell中执行官方公布的安装参数, 以便供后续脚本使用.
-- 1.3-testnet:  测试网部署使用以下参数: <br> 以[coinexdex-test2006](https://github.com/coinexchain/testnets/tree/master/coinexdex-test2006)为示例:
+- 1.3-testnet:  测试网部署使用以下参数: <br> 以[coinexdex-test3000](https://github.com/coinexchain/testnets/tree/master/coinexdex-test3000)为示例:
 
 ```
-export CHAIN_ID=coinexdex-test2006
-export CHAIN_SEEDS=61e905c822f3ed1ae70982cf9ea61453e15104c5@47.75.208.217:26656,8318598ad2a9d47bd9f9a287b329ae23a9201cb3@47.52.106.214:26656
-export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test2006
+export CHAIN_ID=coinexdex-test3000
+export CHAIN_SEEDS=f660dae8095097d67f29d6e0042edd34bed030b2@3.134.208.169:26656
+export ARTIFACTS_BASE_URL=https://raw.githubusercontent.com/coinexchain/testnets/master/coinexdex-test3000
 export CETD_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetd
 export CETCLI_URL=${ARTIFACTS_BASE_URL}/linux_x86_64/cetcli
 export GENESIS_URL=${ARTIFACTS_BASE_URL}/genesis.json
 export CETD_SERVICE_CONF_URL=${ARTIFACTS_BASE_URL}/cetd.service.example
-export SHA256SUM_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
-
-export FAUCET_URL=
-export REST_API=
-export TESTNET_RPC_URL=47.75.208.217:26657
-export TESTNET_EXPLORER_URL=
+export MD5_CHECKSUM_URL=${ARTIFACTS_BASE_URL}/md5.sum
 ```
 
 - 1.3-mainnet: 主网部署时, 使用以下参数:
