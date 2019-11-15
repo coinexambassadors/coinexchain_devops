@@ -536,6 +536,12 @@ export EXPLORER_URL=explorer.coinex.org
     > ./cetcli q block --chain-id=${CHAIN_ID}  | grep $(grep address ${RUN_DIR}/.cetd/config/priv_validator_key.json | grep -o "\: .*" | grep -o '[0-9a-zA-Z]\{40\}') && echo "participates in the consensus" || echo "not participates in the consensus"
     
     输出"participates in the consensus"时, 表示相关你的验证人节点已经在参与全网共识的出块投票.
+    
+    - 检查项3: [区块浏览器](https://explorer.coinex.org/validators)上查看节点是否在参与出块. 
+    	- "Uptime (Last 100 Blocks)"值不断上升, 至到100%为正常.  
+	
+    	![example_identity](./images/explorer_validator.png)
+	
 
 - How to unjail my validator?
 	```
