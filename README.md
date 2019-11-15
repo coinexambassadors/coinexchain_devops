@@ -571,11 +571,11 @@ export EXPLORER_URL=explorer.coinex.org
 - It is recommended to complete the following two item verification for node<br>
     `NOTES: Need to execute on your server and after your server is synced up`<br>
     ` your node is synced up when result of command "{RUN_DIR}/cetcli status" contains "catching_up":false `
-    - Item 1 : Do I in validator set?<br>
+    - CHECK 1 : Do I in validator set?<br>
     > ./cetcli q tendermint-validator-set --chain-id=${CHAIN_ID} | grep $(./cetd tendermint show-validator --home=${RUN_DIR}/.cetd ) && echo "in validator set" || echo "not in validator set"
 
     if shows "in validator set", then your node is validator now. 
-    - Item 2 : Do I participates in the consensus?<br>
+    - CHECK 2 : Do I participates in the consensus?<br>
     > ./cetcli q block --chain-id=${CHAIN_ID}  | grep $(grep address ${RUN_DIR}/.cetd/config/priv_validator_key.json | grep -o "\: .*" | grep -o '[0-9a-zA-Z]\{40\}') && echo "participates in the consensus" || echo "not participates in the consensus"
 
     if shows "participates in the consensus", then your node is participates in the consensus now. 
@@ -583,7 +583,11 @@ export EXPLORER_URL=explorer.coinex.org
 	```
 	cetcli tx slashing unjail --from ${KEY_NAME} --chain-id=${CHAIN_ID} --gas=100000 --fees=2000000cet
 	```
-
+    - CHECK 3: Check on [BlockChain Explorer](https://explorer.coinex.org/validators) 
+    	- check that the "Uptime (Last 100 Blocks)" field is increase and up to 100% (normal).
+	
+    	![example_identity](./images/explorer_validator.png)
+	
   ---
     <br>
     </details> 
