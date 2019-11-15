@@ -137,7 +137,7 @@ export EXPLORER_URL=explorer.coinex.org
 
     发布时官方会在软件包同级目录提供相应软件的sha256, 请自行进行下载软件的校验, 以保证下载了正确的版本.<br>
     > curl ${SHA256SUM_CHECKSUM_URL} > ${RUN_DIR}/sha256.sum<br>
-    > cat ${RUN_DIR}/sha256.sum
+    > cat ${RUN_DIR}/sha256.sum<br>
     > sha256sum ${RUN_DIR}/cetd ${RUN_DIR}/cetcli ${RUN_DIR}/genesis.json ${RUN_DIR}/cetd.service.example<br>
      \#然后比较sha256.sum文件内容与实际输出, 确认一致
     ---
