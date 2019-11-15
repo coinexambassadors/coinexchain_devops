@@ -145,6 +145,7 @@ export EXPLORER_URL=explorer.coinex.org
 
     If release in binary package, md5 digest will also be provided.<br>
     > curl ${SHA256SUM_CHECKSUM_URL} > ${RUN_DIR}/sha256.sum<br>
+    > cat ${RUN_DIR}/sha256.sum<br>
     > sha256sum ${RUN_DIR}/cetd ${RUN_DIR}/cetcli ${RUN_DIR}/genesis.json ${RUN_DIR}/cetd.service.example<br>
      \# then compare outputs and contents in sha256.sum file
     ---
